@@ -5,10 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // components
 import Details from './Components/BookDetails'
+import Nav from './Components/Navbar'
 
 function App() {
   return (
-    <Details />
+    <div>
+      <Nav />
+      <Details />
+    </div>
+    
   );
 }
 
