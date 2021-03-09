@@ -4,9 +4,13 @@ class CreateListing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Fiction: false,
+            Fiction: true,
+            nonFiction: false,
+            educational: false,
             bookName: '',
             bookCondition: 'Poor',
+            price: 0,
+            bookDescription: 'Item Description here',
         };
 
       this.handleInputChange = this.handleInputChange.bind(this);
@@ -43,33 +47,71 @@ class CreateListing extends Component {
     render () {
         return (
             <form onSubmit={this.submitHanler}>
-                <p>Book name:</p>
+                <b><p>Book name:</p></b>
                 <input type='text' name='bookName' onChange={this.changeHandler} ></input>
 
-                <p>Category:</p>
+                <b><p>Price (£): </p></b>
+                <input type='number' name='price' onChange={this.changeHandler} ></input>
+
+                <b><p>Cetegory</p></b>
                 <label>
                     Fiction:
                     <input
                         name="Fiction"
                         type="checkbox"
-                        checked={this.state.isGoing}
+                        checked={this.state.Fiction}
+                        onChange={this.handleInputChange} />
+                </label>
+
+                <label>
+                    Non-Fiction:
+                    <input
+                        name="nonFiction"
+                        type="checkbox"
+                        checked={this.state.nonFiction}
+                        onChange={this.handleInputChange} />
+                </label>
+
+                <label>
+                    Educational:
+                    <input
+                        name="educational"
+                        type="checkbox"
+                        checked={this.state.educational}
                         onChange={this.handleInputChange} />
                 </label>
 
                 <br></br>
 
-                <p>Condition:</p>
+                <b><p>Condition: </p></b>
                 <label>
-                    <input type="radio" value="Very Good" checked={this.state.bookCondition === 'Very Good'} onChange={this.handleCondtionChange} />
-                    Option 3
+                    <input type="radio" value="Poor" checked={this.state.bookCondition === 'Poor'} onChange={this.handleCondtionChange} />
+                    Poor
                 </label>
 
                 <label>
                     <input type="radio" value="Good" checked={this.state.bookCondition === 'Good'} onChange={this.handleCondtionChange} />
-                    Option 2
+                    Good
                 </label>
 
+                <label>
+                    <input type="radio" value="Very Good" checked={this.state.bookCondition === 'Very Good'} onChange={this.handleCondtionChange} />
+                    Very Good
+                </label>
+
+                <label>
+                    <input type="radio" value="New" checked={this.state.bookCondition === 'New'} onChange={this.handleCondtionChange} />
+                    New
+                </label>
+                
+                {/* Need to add the image upload fun */}
+                <b><p>Image Upload: </p></b>
                 <br></br>
+
+                <b><p>Item Description</p></b>
+                <textarea value={this.state.bookDescription} onChange={this.changeHandler} name='bookDescription' />
+
+                <br></br><br></br>
                 <input type='submit'/>
 
                 <label htmlFor="nonFiction"></label>
