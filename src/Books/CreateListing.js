@@ -6,9 +6,7 @@ class CreateListing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Fiction: true,
-            nonFiction: false,
-            educational: false,
+            bookCategory: [],
             bookName: '',
             bookCondition: 'Poor',
             price: 0,
@@ -18,13 +16,23 @@ class CreateListing extends Component {
       this.handleInputChange = this.handleInputChange.bind(this);
     }
       handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
+        const newBooksCetegory = this.state.bookCategory;
+        const check = event.target.checked;
+        const name = event.target.name;
+
+        if(check) {
+            this.setState({
+                bookCategory: [...this.state.bookCategory, name]
+            })
+        } else {
+            var index = newBooksCetegory.indexOf(name);
+            if(index > -1) {
+                newBooksCetegory.splice(index, 1);
+                this.setState({
+                    bookCategory: newBooksCetegory
+                })
+            }
+        }
     }
 
     changeHandler = (event) => {
@@ -62,7 +70,6 @@ class CreateListing extends Component {
                     <input
                         name="Fiction"
                         type="checkbox"
-                        checked={this.state.Fiction}
                         onChange={this.handleInputChange} />
                 </label>
 
@@ -71,7 +78,6 @@ class CreateListing extends Component {
                     <input
                         name="nonFiction"
                         type="checkbox"
-                        checked={this.state.nonFiction}
                         onChange={this.handleInputChange} />
                 </label>
 
@@ -80,7 +86,6 @@ class CreateListing extends Component {
                     <input
                         name="educational"
                         type="checkbox"
-                        checked={this.state.educational}
                         onChange={this.handleInputChange} />
                 </label>
 
