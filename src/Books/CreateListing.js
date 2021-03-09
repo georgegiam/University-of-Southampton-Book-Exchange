@@ -1,5 +1,7 @@
 import React, {Component}  from 'react';
 
+import * as Firebase from '../FirebaseUtility/addBookToDatabase'; 
+
 class CreateListing extends Component {
     constructor(props) {
         super(props);
@@ -41,6 +43,7 @@ class CreateListing extends Component {
     submitHanler = (event) => {
         event.preventDefault();
         console.log(this.state);
+        Firebase.addToCollection(this.state)
         //alert("Book to Sumbit:" + this.state.bookToAdd.name + '\n' + this.state.bookToAdd.category)
     }
 
