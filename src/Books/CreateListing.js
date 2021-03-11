@@ -12,7 +12,6 @@ class CreateListing extends Component {
             price: 0,
             bookDescription: 'Item Description here',
             imageFile: '',
-            imageURL: '',
         };
 
       this.handleInputChange = this.handleInputChange.bind(this);
@@ -57,7 +56,7 @@ class CreateListing extends Component {
         });
     }
 
-    submitHanler = (event) => {
+    submitHandler = (event) => {
         event.preventDefault();
         console.log(this.state);
         Firebase.addToCollection(this.state)
@@ -66,7 +65,7 @@ class CreateListing extends Component {
 
     render () {
         return (
-            <form onSubmit={this.submitHanler}>
+            <form onSubmit={this.submitHandler}>
                 
                 <div className="form-group row">
                     <div className="col-sm-4 offset-sm-4 text-center">
