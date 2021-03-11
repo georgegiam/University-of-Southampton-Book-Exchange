@@ -11,6 +11,8 @@ class CreateListing extends Component {
             bookCondition: 'Poor',
             price: 0,
             bookDescription: 'Item Description here',
+            imageFile: '',
+            imageURL: '',
         };
 
       this.handleInputChange = this.handleInputChange.bind(this);
@@ -33,6 +35,13 @@ class CreateListing extends Component {
                 })
             }
         }
+    }
+
+    imageHandler = (event) => {
+        const image = event.target.files[0];
+        this.setState({
+            imageFile: image
+        })
     }
 
     changeHandler = (event) => {
@@ -58,73 +67,78 @@ class CreateListing extends Component {
     render () {
         return (
             <form onSubmit={this.submitHanler}>
-                <b><p>Book name:</p></b>
-                <input type='text' name='bookName' onChange={this.changeHandler} ></input>
-
-                <b><p>Price (£): </p></b>
-                <input type='number' name='price' onChange={this.changeHandler} ></input>
-
-                <b><p>Cetegory</p></b>
-                <label>
-                    Fiction:
-                    <input
-                        name="Fiction"
-                        type="checkbox"
-                        onChange={this.handleInputChange} />
-                </label>
-
-                <label>
-                    Non-Fiction:
-                    <input
-                        name="nonFiction"
-                        type="checkbox"
-                        onChange={this.handleInputChange} />
-                </label>
-
-                <label>
-                    Educational:
-                    <input
-                        name="educational"
-                        type="checkbox"
-                        onChange={this.handleInputChange} />
-                </label>
-
-                <br></br>
-
-                <b><p>Condition: </p></b>
-                <label>
-                    <input type="radio" value="Poor" checked={this.state.bookCondition === 'Poor'} onChange={this.handleCondtionChange} />
-                    Poor
-                </label>
-
-                <label>
-                    <input type="radio" value="Good" checked={this.state.bookCondition === 'Good'} onChange={this.handleCondtionChange} />
-                    Good
-                </label>
-
-                <label>
-                    <input type="radio" value="Very Good" checked={this.state.bookCondition === 'Very Good'} onChange={this.handleCondtionChange} />
-                    Very Good
-                </label>
-
-                <label>
-                    <input type="radio" value="New" checked={this.state.bookCondition === 'New'} onChange={this.handleCondtionChange} />
-                    New
-                </label>
                 
-                {/* Need to add the image upload fun */}
-                <b><p>Image Upload: </p></b>
+                <div className="form-group row">
+                    <div className="col-sm-4 offset-sm-4 text-center">
+                        <b><label >Book Title:</label></b>
+                        <input type="text" className="form-control" id="bookName" name="bookName" aria-describedby="bookHelp" placeholder="Enter book name" onChange={this.changeHandler} size="20"/>
+                        <small id="bookHelp" className="form-text text-muted">Please list the full title</small>
+                    </div>
+                </div>
+                    
+                <div className="form-group row">
+                    <div className="col-sm-4 offset-sm-4 text-center">
+                        <label >Price:</label>
+                        <input type="number" className="form-control" id="price" name="price" aria-describedby="priceHelp" placeholder="Enter book price" onChange={this.changeHandler}/>
+                        <small id="emailHelp" className="form-text text-muted">Using £</small>
+                    </div>
+                </div>
+
+                <b><label >Category:</label></b>
+                <br></br>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="checkbox" id="Fiction" name="Fiction" onChange={this.handleInputChange}/>
+                    <label className="form-check-label" >Fiction</label>
+                </div>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="checkbox" id="nonFiction" name="nonFiction" onChange={this.handleInputChange}/>
+                    <label className="form-check-label" >Non-Fiction</label>
+                </div>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="checkbox" id="educational" name="educational" onChange={this.handleInputChange}/>
+                    <label className="form-check-label" >Educational</label>
+                </div>
+
                 <br></br>
 
-                <b><p>Item Description</p></b>
-                <textarea value={this.state.bookDescription} onChange={this.changeHandler} name='bookDescription' />
+                <b><label >Condition:</label></b>
+                <br></br>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" value="Used" checked={this.state.bookCondition === 'Used'} onChange={this.handleCondtionChange}/>
+                    <label className="form-check-label" >Used</label>
+                </div>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" value="Good" checked={this.state.bookCondition === 'Good'} onChange={this.handleCondtionChange}/>
+                    <label className="form-check-label" >Good</label>
+                </div>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" value="Very Good" checked={this.state.bookCondition === 'Very Good'} onChange={this.handleCondtionChange}/>
+                    <label className="form-check-label" >Very Good</label>
+                </div>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" value="New" checked={this.state.bookCondition === 'New'} onChange={this.handleCondtionChange}/>
+                    <label className="form-check-label" >New</label>
+                </div>
+
+                <br></br>
+                
+                <div className="col-sm-4 offset-sm-4 text-center">
+                    <b><label htmlFor="exampleFormControlTextarea1">Item Description: </label></b>
+                    <textarea className="form-control" rows="3" value={this.state.bookDescription} onChange={this.changeHandler} name='bookDescription'></textarea>
+                </div>
+
+                <br></br>
+
+                {/* Need to add the image upload fun */}
+                <div className="form-check form-check-inline">
+                    <input type="file" className="form-control-file" onChange={this.imageHandler}/>
+                </div>
 
                 <br></br><br></br>
-                <input type='submit'/>
-
-                <label htmlFor="nonFiction"></label>
+                <input type='submit' className="btn btn-primary"/>
 
             </form>
+
         )
     }
 }
