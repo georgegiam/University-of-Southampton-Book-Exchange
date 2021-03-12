@@ -37,14 +37,6 @@
   }
 }
 
-.card {
-  width: 20rem;
-}
-
-#book-image {
-  width: 60%;
-}
-
-#book-details-container{
-  margin-top: 7%;
+#landing{
+  margin-top: 3%;
 }

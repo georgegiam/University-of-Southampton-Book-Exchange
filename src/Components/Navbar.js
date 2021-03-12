@@ -16,6 +16,7 @@ function Nav(){
                 </ul> 
                 <a href="#" class="text-decoration-none">Login</a>                              
             </div>
+           
         </nav>
     )
 }
