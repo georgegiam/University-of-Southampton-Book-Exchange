@@ -6,7 +6,10 @@ function Landpage(){
     return (
         <div class="container" id="landing">   
 
-            <div class="container-fluid w-50">
+        {/* app title */}
+        <h2 class="text-center">University of Southampton Book Exchange</h2><br/>
+        
+            <div class="container-fluid w-50 text-center">
                 {/* search */}
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search..." />
