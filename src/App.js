@@ -4,14 +4,14 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // components
-import Details from './Components/BookDetails'
+import Landpage from './Components/LandingPage'
 import Nav from './Components/Navbar'
 
 function App() {
   return (
     <div>
       <Nav />
-      <Details />
+      <Landpage />
     </div>
     
   );
