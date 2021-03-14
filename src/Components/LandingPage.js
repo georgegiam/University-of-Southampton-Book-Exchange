@@ -1,100 +1,26 @@
-import React from 'react'
+import React, {PureComponent} from "react";
 import '../App.css'
 
+class Landpage extends PureComponent {
 
-function Landpage(){
-    return (
-        <div class="container" id="landing">   
+    render() {
 
-        {/* app title */}
-        <h2 class="text-center">University of Southampton Book Exchange</h2><br/>
-        
-            <div class="container-fluid w-50 text-center">
-                {/* search */}
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search..." />
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button">Search</button>
+        console.log("At landing page now:", this.props.books);
+        return this.props.books.map((book, index) => {
+            return (
+                <div className="card">
+                    <img className="card-img-top" src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" alt="Card image cap" />
+                    <div className="card-body">
+                    <h5 className="card-title">{book.bookName}</h5>                   
+                    <h5 className="text-muted">{book.bookPrice}</h5>
                     </div>
-                </div>   
-            </div>
-
-            <h5 class="text-muted">Featured Books</h5> <hr/>
-            {/* card deck 1 */}
-            <div class="card-deck">
-                {/* card 1 */}
-                <div class="card">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                    <h5 class="card-title">Python for Dummies</h5>                   
-                    <h5 class="text-muted">9.99$</h5>
-                    </div>
-                    <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-sm float-right">Deatils</button>
+                    <div className="card-footer">
+                    <button type="button" className="btn btn-primary btn-sm float-right">Deatils</button>
                     </div>
                 </div>
-                {/* card 2 */}
-                <div class="card">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                    <h5 class="card-title">Python for Dummies</h5>                   
-                    <h5 class="text-muted">9.99$</h5>
-                    </div>
-                    <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-sm float-right">Deatils</button>
-                    </div>
-                </div>
-                {/* card 3 */}
-                <div class="card">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                    <h5 class="card-title">Python for Dummies</h5>                   
-                    <h5 class="text-muted">9.99$</h5>
-                    </div>
-                    <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-sm float-right">Deatils</button>
-                    </div>
-                </div> 
-            </div> <br/>
-
-            {/* card deck 2 */}
-            <div class="card-deck">
-                {/* card 1 */}
-                <div class="card">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                    <h5 class="card-title">Python for Dummies</h5>                   
-                    <h5 class="text-muted">9.99$</h5>
-                    </div>
-                    <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-sm float-right">Deatils</button>
-                    </div>
-                </div>
-                {/* card 2 */}
-                <div class="card">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                    <h5 class="card-title">Python for Dummies</h5>                   
-                    <h5 class="text-muted">9.99$</h5>
-                    </div>
-                    <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-sm float-right">Deatils</button>
-                    </div>
-                </div>
-                {/* card 3 */}
-                <div class="card">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" alt="Card image cap" />
-                    <div class="card-body">
-                    <h5 class="card-title">Python for Dummies</h5>                   
-                    <h5 class="text-muted">9.99$</h5>
-                    </div>
-                    <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-sm float-right">Deatils</button>
-                    </div>
-                </div> 
-            </div>
-        </div>    
-    )
+                );
+            });
+    }
 }
 
 export default Landpage
