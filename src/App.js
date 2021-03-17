@@ -1,13 +1,13 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RegisterForm from './Components/Register'
 import Nav from './Components/Navbar'
+import LoginForm from './Components/Login'
 
 function App() {
   return (
     <div>
       <Nav />
-      <RegisterForm />    
+      <LoginForm />    
     </div>
 
   );
