@@ -19,7 +19,6 @@ class App extends Component {
 
   state = {
     books: [],
-    countBooks: 0
   };
 
   componentDidMount() {
@@ -34,16 +33,14 @@ class App extends Component {
 
   render() {
     let cardBooks = null;
-    let countBooks = 0; 
 
     if (this.state.books) {
       cardBooks = (
         <div>
           <h5 className="text-muted">Featured Books</h5> <hr />
-          <div class="card-deck m-5">
+          <div className="card-deck m-5">
             <Landpage 
-            books={this.state.books}
-            count={countBooks}></Landpage>
+            books={this.state.books}></Landpage>
           </div>
         </div>
       );

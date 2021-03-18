@@ -44,7 +44,6 @@ class CreateListing extends Component {
     }
 
     changeHandler = (event) => {
-        //alert(event.target.value
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -60,7 +59,6 @@ class CreateListing extends Component {
         event.preventDefault();
         console.log(this.state);
         Firebase.addToCollection(this.state)
-        //alert("Book to Sumbit:" + this.state.bookToAdd.name + '\n' + this.state.bookToAdd.category)
     }
 
     render () {
@@ -128,9 +126,8 @@ class CreateListing extends Component {
 
                 <br></br>
 
-                {/* Need to add the image upload fun */}
                 <div className="form-check form-check-inline">
-                    <input type="file" className="form-control-file" onChange={this.imageHandler}/>
+                    <input type="file" className="form-control-file" onChange={this.imageHandler} required/>
                 </div>
 
                 <br></br><br></br>
