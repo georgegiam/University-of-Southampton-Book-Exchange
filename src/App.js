@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import "./App.css";
 
@@ -11,6 +17,7 @@ import Nav from "./Components/Navbar";
 import CreateListing from './Books/CreateListing'
 
 import * as Firebase from "./FirebaseUtility/readFromDatabase";
+
 
 class App extends Component {
   constructor(props) {
@@ -50,10 +57,11 @@ class App extends Component {
 
     return (
       <div>
-        <Nav />
-        {cardBooks}
-        {/* <CreateListing/> */}
+        <Nav 
+        index={cardBooks}/>
+        {/* {cardBooks} */}
       </div>
+
     );
   }
 }
