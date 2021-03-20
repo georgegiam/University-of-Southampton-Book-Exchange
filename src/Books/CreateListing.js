@@ -1,8 +1,10 @@
-import React, {Component}  from 'react';
+import React, {PureComponent}  from 'react';
+import { withRouter } from 'react-router-dom';
 
 import * as Firebase from '../FirebaseUtility/addBookToDatabase'; 
+import firebase from "../FirebaseUtility/firebaseSetup";
 
-class CreateListing extends Component {
+class CreateListing extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +17,9 @@ class CreateListing extends Component {
         };
 
       this.handleInputChange = this.handleInputChange.bind(this);
+
     }
+
       handleInputChange(event) {
         const newBooksCetegory = this.state.bookCategory;
         const check = event.target.checked;
@@ -62,6 +66,20 @@ class CreateListing extends Component {
     }
 
     render () {
+        const {history} = this.props; // TODO: This needs to improved as were making multiple render calls here
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              // User is signed in, see docs for a list of available properties
+              // https://firebase.google.com/docs/reference/js/firebase.User
+              var uid = user.uid;
+              console.log("uid: " + uid);
+              this.setState({isLoggedIn: true})
+            } else {
+                //alert("Please Login First!");
+                history.push("/login");
+            }
+          });
+
         return (
             <form onSubmit={this.submitHandler}>
                 
@@ -139,4 +157,4 @@ class CreateListing extends Component {
     }
 }
 
-export default CreateListing;
+export default withRouter(CreateListing);

@@ -37,13 +37,17 @@
   }
 }
 
-<<<<<<< HEAD
+
+li {
+  display:inline;
+  padding: 5px 20px;
+}
+
+
 #landing{
   margin-top: 3%;
 }
-=======
 #login {
   margin-top: 7%;
   width: 25%;
 }
->>>>>>> login

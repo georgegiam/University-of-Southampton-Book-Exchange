@@ -17,6 +17,14 @@ export function addToCollection(listing) {
         })
         .then((docRef) => {
           console.log("Document written with ID: ", docRef.id);
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              var uid = user.uid;
+              var bookID = docRef.id; 
+              db.collection("Users").doc(uid).collection("Books").doc(docRef.id).set(({}));
+            } 
+          });
+
         })
         .catch((error) => {
           console.error("Error adding document: ", error);

@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 
 import "./App.css";
 
@@ -65,21 +58,6 @@ class App extends Component {
 
     );
   }
-=======
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Nav from './Components/Navbar'
-import LoginForm from './Components/Login'
-
-function App() {
-  return (
-    <div>
-      <Nav />
-      <LoginForm />    
-    </div>
-
-  );
->>>>>>> login
 }
 
 export default App;
