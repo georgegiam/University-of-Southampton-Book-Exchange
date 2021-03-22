@@ -41,6 +41,10 @@ const LoginForm = () => {
             });
     }
 
+    function registerHandler() {
+        history.push("/register");
+    }
+    
     function submitHandler(event) {
         event.preventDefault();
         firebase.auth().signInWithEmailAndPassword(email, pass)
@@ -73,7 +77,7 @@ const LoginForm = () => {
             <button type="submit" className="btn btn-primary w-100" onClick={() => googleHandler("facebook")} disabled>Sign in with Facebook</button>
             </form> <br />
             
-            <small className="d-flex justify-content-center">Not a member yet? <a href="#">Create an account</a></small>  
+            <small className="d-flex justify-content-center">Not a member yet? <a href="#" onClick={registerHandler}>Create an account</a></small>  
         </div>    
     )
 }
