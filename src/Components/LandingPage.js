@@ -8,17 +8,19 @@ class Landpage extends PureComponent {
         return this.props.books.map((book, index) => {
             let endTag = null;
             let isNewDeck = ((index + 1) % 4) === 0;
+            // 4th card is added in the row
             if(isNewDeck){
+                // what's this??
                 endTag = <div className="w-100"></div>
             }
             return (
                     <Aux key={index}>
                         <div className="card" id="book-card">
-                            <a href="#"><img className="card-img-top" src={book.bookImageUrl} alt="Card image cap" /></a>
-                            <div className="card-body">
-                                <b><h5 className="card-title">{book.bookName}</h5></b>                
-                                <h5 className="text-muted">£{book.bookPrice}</h5>
-                            </div>
+                        <a href="#"><img className="card-img-top" src={book.bookImageUrl} alt="Card image cap" /></a>
+                        <div className="card-body">
+                            <b><h5 className="card-title">{book.bookName}</h5></b>                
+                            <h5 className="text-muted">£{book.bookPrice}</h5>
+                        </div>
                     </div>
 
              

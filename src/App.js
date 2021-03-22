@@ -40,12 +40,12 @@ class App extends Component {
         <div className="container" id="landing">
 
           <h2 className="text-center">University of Southampton Book Exchange</h2>
-          
-          <h5 className="text-muted">Featured Books</h5> <hr />
+
+          <h5 className="text-muted">Featured Books</h5><hr />
           <div className="card-deck">
             <Landpage 
             books={this.state.books}></Landpage>
-          </div>
+          </div> 
        
 
         </div>
