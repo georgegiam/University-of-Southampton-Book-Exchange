@@ -45,9 +45,18 @@ li {
 
 
 #landing{
-  margin-top: 3%;
+  margin-top: 5%;
 }
 #login {
   margin-top: 7%;
   width: 25%;
+}
+
+/* image in the card */
+.card-img-top {
+  height: 50mm;
+}
+
+.card {
+  max-width: 18rem;
 }
