@@ -78,11 +78,12 @@ const LoginForm = () => {
             {/* Login Button */}
             <button type='submit' className="btn btn-primary w-100">Sign in</button>
 
-
-
             </form><br/>
 
             <div className="container-fluid text-center">
+                {/* does nothing yet */}
+                <a href="#"><small>I forgot my password</small></a><br/><br/>
+
                 <small>Sign in with:</small><br/>
 
                 <a href="#" id="social">
@@ -93,7 +94,7 @@ const LoginForm = () => {
                 </a>
             </div><br/>
             
-            <small className="d-flex justify-content-center">Not a member yet? <a href="#" onClick={registerHandler}>Create an account</a></small>  
+            <small className="d-flex justify-content-center">Not a member yet?&nbsp;<a href="#" onClick={registerHandler}>Create an account</a></small>  
         </div>    
     )
 }
