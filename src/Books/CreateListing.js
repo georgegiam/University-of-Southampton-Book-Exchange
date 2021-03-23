@@ -8,7 +8,7 @@ class CreateListing extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            bookCategory: [],
+            bookCategory: '',
             bookName: '',
             bookCondition: 'Poor',
             price: 0,
@@ -16,28 +16,13 @@ class CreateListing extends PureComponent {
             imageFile: '',
         };
 
-      this.handleInputChange = this.handleInputChange.bind(this);
 
     }
 
-      handleInputChange(event) {
-        const newBooksCetegory = this.state.bookCategory;
-        const check = event.target.checked;
-        const name = event.target.name;
-
-        if(check) {
-            this.setState({
-                bookCategory: [...this.state.bookCategory, name]
-            })
-        } else {
-            var index = newBooksCetegory.indexOf(name);
-            if(index > -1) {
-                newBooksCetegory.splice(index, 1);
-                this.setState({
-                    bookCategory: newBooksCetegory
-                })
-            }
-        }
+    typeHandler = (event) => {
+        this.setState({
+            bookCategory: event.target.value
+        });
     }
 
     imageHandler = (event) => {
@@ -142,63 +127,63 @@ class CreateListing extends PureComponent {
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Type</label>
                             <div class="col-sm-10">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Action and adventure</option>
-                                    <option>Alternate history</option>
-                                    <option>Anthology</option>
-                                    <option>Art/architecture</option>
-                                    <option>Autobiography</option>
-                                    <option>Biography</option>
-                                    <option>Business/economics</option>
-                                    <option>Crafts/hobbies</option>
-                                    <option>Chick lit</option>
-                                    <option>Children's</option>
-                                    <option>Classic</option>
-                                    <option>Comic book</option>
-                                    <option>Coming-of-age</option>
-                                    <option>Crime</option>
-                                    <option>Crafts/hobbies</option>
-                                    <option>Cookbook</option>
-                                    <option>Drama</option>
-                                    <option>Diary</option>
-                                    <option>Dictionary</option>
-                                    <option>Encyclopedia</option>
-                                    <option>Fairytale</option>
-                                    <option>Fantasy</option>
-                                    <option>Graphic novel</option>
-                                    <option>Guide</option>
-                                    <option>Historical fiction</option>
-                                    <option>Horror</option>
-                                    <option>Health/fitness</option>
-                                    <option>History</option>
-                                    <option>Home and garden</option>
-                                    <option>Humor</option>
-                                    <option>Journal</option>
-                                    <option>Mystery</option>
-                                    <option>Math</option>
-                                    <option>Memoir</option>
-                                    <option>Paranormal romance</option>
-                                    <option>Picture book</option>
-                                    <option>Poetry</option>
-                                    <option>Political thriller</option>
-                                    <option>Philosophy</option>
-                                    <option>Prayer</option>
-                                    <option>Romance</option>
-                                    <option>Review</option>
-                                    <option>Religion, spirituality, and new age</option>
-                                    <option>Satire</option>
-                                    <option>Science</option>
-                                    <option>Self help</option>
-                                    <option>Sports and leisure</option>
-                                    <option>Science fiction</option>
-                                    <option>Short story</option>
-                                    <option>Suspense</option>
-                                    <option>Thriller</option>
-                                    <option>Travel</option>
-                                    <option>Textbook</option>
-                                    <option>True crime</option>
-                                    <option>Western</option>
-                                    <option>Young adult</option>
+                                <select class="form-control" id="exampleFormControlSelect1" onChange={this.typeHandler}>
+                                    <option value="Action and adventure">Action and adventure</option>
+                                    <option value="Alternate history">Alternate history</option>
+                                    <option value="Anthology">Anthology</option>
+                                    <option value="Art/architecture" >Art/architecture</option>
+                                    <option value="Autobiography"> Autobiography</option>
+                                    <option value="Biography">Biography</option>
+                                    <option value="Business/economics">Business/economics</option>
+                                    <option value="Crafts/hobbies">Crafts/hobbies</option>
+                                    <option value="Chick lit">Chick lit</option>
+                                    <option value="Children's">Children's</option>
+                                    <option value="Classic">Classic</option>
+                                    <option value="Comic book">Comic book</option>
+                                    <option value="Coming-of-age">Coming-of-age</option>
+                                    <option value="Crime">Crime</option>
+                                    <option value="Crafts/hobbies">Crafts/hobbies</option>
+                                    <option value="Cookbook">Cookbook</option>
+                                    <option value="Drama">Drama</option>
+                                    <option value="Diary">Diary</option>
+                                    <option value="Dictionary">Dictionary</option>
+                                    <option value="Encyclopedia">Encyclopedia</option>
+                                    <option value="Fairytale">Fairytale</option>
+                                    <option value="Fantasy">Fantasy</option>
+                                    <option value="Graphic novel">Graphic novel</option>
+                                    <option value="Guide">Guide</option>
+                                    <option value="Historical fiction">Historical fiction</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Health/fitness">Health/fitness</option>
+                                    <option value="History">History</option>
+                                    <option value="Home and garden">Home and garden</option>
+                                    <option value="Humor">Humor</option>
+                                    <option value="Journal">Journal</option>
+                                    <option value="Mystery">Mystery</option>
+                                    <option value="Math">Math</option>
+                                    <option value="Memoir">Memoir</option>
+                                    <option value="Paranormal romance">Paranormal romance</option>
+                                    <option value="Picture book">Picture book</option>
+                                    <option value="Poetry">Poetry</option>
+                                    <option value="Political thriller">Political thriller</option>
+                                    <option value="Philosophy">Philosophy</option>
+                                    <option value="Prayer">Prayer</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Review">Review</option>
+                                    <option value="Religion, spirituality, and new age">Religion, spirituality, and new age</option>
+                                    <option value="Satire">Satire</option>
+                                    <option value="Science">Science</option>
+                                    <option value="Self help">Self help</option>
+                                    <option value="Sports and leisure">Sports and leisure</option>
+                                    <option value="Science fiction">Science fiction</option>
+                                    <option value="Short story">Short story</option>
+                                    <option value="Suspense">Suspense</option>
+                                    <option value="Thriller">Thriller</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Textbook">Textbook</option>
+                                    <option value="True crime">True crime</option>
+                                    <option value="Western">Western</option>
+                                    <optionv value="Young adult">Young adult</optionv>
                                 </select>
                             </div>
                         </div>
