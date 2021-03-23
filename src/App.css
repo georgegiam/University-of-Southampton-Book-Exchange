@@ -104,3 +104,7 @@ li {
   width: 40%;
   margin-top: 5%;
 }
+
+#social {
+  text-decoration: none;
+}

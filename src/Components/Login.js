@@ -4,6 +4,10 @@ import '../App.css'
 
 import firebase from "../FirebaseUtility/firebaseSetup";
 
+import { FaFacebook, FaGoogle } from 'react-icons/fa';
+
+
+
 import { useHistory } from 'react-router-dom';
 
 const LoginForm = () => {
@@ -72,10 +76,22 @@ const LoginForm = () => {
                 <input type="password" className="form-control" id="inputPassword" name="pass" onChange={passHandler} placeholder="Password" required />                
             </div>                      
             {/* Login Button */}
-            <input type='submit' className="btn btn-primary w-100" value="Login"/>
-            <button type="submit" className="btn btn-primary w-100" onClick={() => googleHandler("google")}>Sign in with Google</button>
-            <button type="submit" className="btn btn-primary w-100" onClick={() => googleHandler("facebook")} disabled>Sign in with Facebook</button>
-            </form> <br />
+            <button type='submit' className="btn btn-primary w-100">Sign in</button>
+
+
+
+            </form><br/>
+
+            <div className="container-fluid text-center">
+                <small>Sign in with:</small><br/>
+
+                <a href="#" id="social">
+                    <FaGoogle onClick={() => googleHandler("google")}/>
+                </a>&nbsp;
+                <a href="#">
+                    <FaFacebook onClick={() => googleHandler("facebook")}/>
+                </a>
+            </div><br/>
             
             <small className="d-flex justify-content-center">Not a member yet? <a href="#" onClick={registerHandler}>Create an account</a></small>  
         </div>    
