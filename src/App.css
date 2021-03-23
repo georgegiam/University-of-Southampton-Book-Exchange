@@ -37,7 +37,11 @@
   }
 }
 
-#register {
-  margin-top: 7%;
-  width: 30%;
+#myBooks {
+  margin-top: 5%;
+  width: 50%;
+}
+
+#book-image {
+  width: 10%;
 }
