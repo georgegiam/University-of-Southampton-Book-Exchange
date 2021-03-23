@@ -12,6 +12,9 @@ import RegisterForm from '../Components/Register'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
+// react icons
+import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt } from 'react-icons/fa';
+
 const Nav = (props) => {
 
 
@@ -36,13 +39,13 @@ const Nav = (props) => {
                     {/* any other link goes here */}
                 </ul> 
                 <div class="dropdown">
-                    <button class="btn btn-secondary btn-sm dropdown-toggle">user@soton.ac.uk</button>
+                    <button class="btn btn-info btn-sm dropdown-toggle"><span class="badge badge-danger">9</span>&nbsp; user@soton.ac.uk</button>
                     <div class="dropdown-content">
-                        <a class="dropdown-item" href="#">Notifications <span class="badge badge-danger">9</span></a>
-                        <Link class="dropdown-item" to="/addbook">Add Book</Link>
-                        <Link class="dropdown-item" to="#">My Books</Link>
-                        <a class="dropdown-item" href="#">My Calendar</a>
-                        <a class="dropdown-item text-danger" onClick={signOutHandler} href="#">Logout</a>
+                        <a class="dropdown-item" href="#">< FaBell/>&nbsp; Notifications <span class="badge badge-danger">9</span></a>
+                        <Link class="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
+                        <Link class="dropdown-item" to="#"><FaBook/>&nbsp; My Books</Link>
+                        <a class="dropdown-item" href="#"><FaCalendar/>&nbsp; My Calendar</a>
+                        <a class="dropdown-item text-danger" onClick={signOutHandler} href="#"><FaSignOutAlt/>&nbsp; Signout</a>
                     </div>
                 </div>   
                 {/* <Link to="/login" href="#" className="text-decoration-none">Login</Link> */}

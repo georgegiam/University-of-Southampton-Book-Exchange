@@ -4,6 +4,7 @@ import '../App.css'
 
 import firebase from "../FirebaseUtility/firebaseSetup";
 
+// react icons
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
 
