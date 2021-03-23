@@ -99,3 +99,8 @@ li {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
+#addBook {
+  width: 40%;
+  margin-top: 5%;
+}

@@ -40,7 +40,7 @@ const Nav = (props) => {
                     <div class="dropdown-content">
                         <a class="dropdown-item" href="#">Notifications <span class="badge badge-danger">9</span></a>
                         <Link class="dropdown-item" to="/addbook">Add Book</Link>
-                        <Link class="dropdown-item" to="/">My Books</Link>
+                        <Link class="dropdown-item" to="#">My Books</Link>
                         <a class="dropdown-item" href="#">My Calendar</a>
                         <a class="dropdown-item text-danger" onClick={signOutHandler} href="#">Logout</a>
                     </div>
