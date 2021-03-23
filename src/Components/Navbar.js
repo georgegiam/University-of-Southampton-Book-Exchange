@@ -8,6 +8,7 @@ import {
 
 import CreateListing from '../Books/CreateListing';
 import LoginForm from '../Components/Login';
+import RegisterForm from '../Components/Register'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
@@ -57,6 +58,9 @@ const Nav = (props) => {
               <CreateListing/>
             </Route>
             {/* route to index */}
+            <Route path="/register">
+                <RegisterForm/>
+            </Route>
             <Route path="/">
                 {props.index}
             </Route>
