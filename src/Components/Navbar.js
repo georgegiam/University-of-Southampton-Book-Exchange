@@ -57,10 +57,11 @@ const Nav = (props) => {
             <Route path="/addbook">
               <CreateListing/>
             </Route>
-            {/* route to index */}
+            {/* route to register */}
             <Route path="/register">
                 <RegisterForm/>
             </Route>
+             {/* route to index */}
             <Route path="/">
                 {props.index}
             </Route>
