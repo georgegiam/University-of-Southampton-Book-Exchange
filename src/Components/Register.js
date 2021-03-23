@@ -63,6 +63,7 @@ class RegisterForm extends React.Component{
     render() {
         return (
             <div className="container" id="register">   
+                <div className="container-fluid">
                 <h3>Create an Account</h3><br />
                 <form onSubmit={this.handleSubmit}>
                 <div className="form-row">
@@ -103,16 +104,11 @@ class RegisterForm extends React.Component{
                 <button type="submit" className="btn btn-primary w-100">Register</button>
                 </form> <br />
                 
-                <small className="d-flex justify-content-center">Already have an account? <a href="#">Login</a></small>  
+                <small className="d-flex justify-content-center">Already have an account? <a href="#">Login</a></small>
+                </div>  
             </div>    
         )
     }
-    
-
-   
-
 }
-
-
 
 export default withRouter(RegisterForm);

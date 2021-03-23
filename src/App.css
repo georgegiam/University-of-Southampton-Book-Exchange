@@ -100,7 +100,7 @@ li {
   background-color: #3e8e41;
 }
 
-#addBook {
+#addBook, #register {
   width: 40%;
   margin-top: 5%;
 }
