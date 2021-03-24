@@ -39,30 +39,37 @@ const imageUrl = (image) => {
   return new Promise((resolve, reject) => {
     var storage = firebase.storage();
     var imageURL = "";
-    const uploadImage = storage.ref(`/images/${image.name}`).put(image);
+    firebase.auth().onAuthStateChanged(function(user) {
+      if(user) {
+        const uploadImage = storage.ref(`/images/${user.uid}/${image.name}`).put(image);
+        uploadImage.on(
+          "state_changed",
+          (snapShot) => {
+            console.log("Image Uploading....");
+            //console.log(snapShot);
+          },
+          (err) => {
+            console.log("Image failed to upload....");
+            //console.log(err);
+            reject(err);
+          },
+          () => {
+            storage
+              .ref(`/images/${user.uid}`)
+              .child(image.name)
+              .getDownloadURL()
+              .then((storageLocation) => {
+                imageURL = storageLocation;
+                console.log("Image URL: " + imageURL);
+                resolve(imageURL);
+              });
+          }
+        );
 
-    uploadImage.on(
-      "state_changed",
-      (snapShot) => {
-        console.log("Image Uploading....");
-        //console.log(snapShot);
-      },
-      (err) => {
-        console.log("Image failed to upload....");
-        //console.log(err);
-        reject(err);
-      },
-      () => {
-        storage
-          .ref("images")
-          .child(image.name)
-          .getDownloadURL()
-          .then((storageLocation) => {
-            imageURL = storageLocation;
-            console.log("Image URL: " + imageURL);
-            resolve(imageURL);
-          });
+      } else{
+        alert("Please Login first!");
       }
-    );
+    });
+
   });
 };
