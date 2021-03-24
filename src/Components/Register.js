@@ -45,16 +45,22 @@ class RegisterForm extends React.Component{
         else {
             const {history} = this.props;
             // add user to firebase
-            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.pass)
-                    .then((userCredential) => {
-                        // User is signed in here
-                        history.push("/");
-                    })
-                    .catch((error) => {
-                        var errorMessage = error.message;
-                        console.log("Error with create account: ", errorMessage);
-                        alert(errorMessage);
-                    });
+            var actionCodeSettings = {
+                // URL you want to redirect back to. The domain (www.example.com) for this
+                // URL must be in the authorized domains list in the Firebase Console.
+                url: 'http://localhost:3000/confirmation',
+                // This must be true.
+                handleCodeInApp: true
+              };
+            firebase.auth().sendSignInLinkToEmail(this.state.email, actionCodeSettings)
+            .then(() => {
+                window.localStorage.setItem('emailForSignIn', this.state.email);
+                window.localStorage.setItem('passForSignIn', this.state.pass);
+                alert("Please check your email for verfication");
+            }).catch((error) => {
+                var errorMessage = error.message;
+                console.log(errorMessage);
+            })
         }
 
         event.preventDefault();
@@ -66,16 +72,6 @@ class RegisterForm extends React.Component{
                 <div className="container-fluid">
                 <h3>Create an Account</h3><br />
                 <form onSubmit={this.handleSubmit}>
-                <div className="form-row">
-                    {/* First Name */}
-                    <div className="form-group col-md-6">                
-                        <input type="text" className="form-control" id="inputEmail4" placeholder="First Name" required />
-                    </div>
-                    {/* Last Name */}
-                    <div className="form-group col-md-6">            
-                        <input type="text" className="form-control" id="inputPassword4" placeholder="Lat Name" required />
-                    </div>
-                </div>
                 {/* Email */}
                 <div className="form-group">             
                     <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.handleChange} id="inputAddress" placeholder="Email" required />

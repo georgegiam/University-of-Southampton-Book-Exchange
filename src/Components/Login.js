@@ -7,8 +7,6 @@ import firebase from "../FirebaseUtility/firebaseSetup";
 // react icons
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 
-
-
 import { useHistory } from 'react-router-dom';
 
 const LoginForm = () => {

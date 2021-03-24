@@ -1,30 +1,59 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
   } from "react-router-dom";
+  
 
 import CreateListing from '../Books/CreateListing';
 import LoginForm from '../Components/Login';
 import RegisterForm from '../Components/Register'
+import Confirmation from '../Components/Confirmation'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
 // react icons
-import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt } from 'react-icons/fa';
+import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt, FaSignInAlt } from 'react-icons/fa';
 
 const Nav = (props) => {
+    
+    const [isUserLoggedIn, setStatus] = useState(null);
 
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                console.log("NavBar: userlogged in");
+                setStatus(
+                    <div className="dropdown">
+                    <button className="btn btn-info btn-sm dropdown-toggle"><span className="badge badge-danger">9</span>&nbsp; {user.email}</button>
+                    <div className="dropdown-content">
+                        <a className="dropdown-item" href="#">< FaBell/>&nbsp; Notifications <span className="badge badge-danger">9</span></a>
+                        <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
+                        <Link className="dropdown-item" to="#"><FaBook/>&nbsp; My Books</Link>
+                        <a className="dropdown-item" href="#"><FaCalendar/>&nbsp; My Calendar</a>
+                        <a className="dropdown-item text-danger" onClick={signOutHandler} href="http://localhost:3000/login"><FaSignOutAlt/>&nbsp; Signout</a>
+                    </div>
+                </div> 
+                );
+            } else {
+                console.log("NavBar: userlogged NOT in");
+                setStatus(
+                    <Link to="/login" href="#" className="text-decoration-none">Login</Link>
+                );
+            }
+          });
+
+    }, []);
 
     function signOutHandler() {
         firebase.auth().signOut().then(() => {
-                // Sign-out successful.
-              }).catch((error) => {
+            // Sign-out successful.
+            }).catch((error) => {
                 // An error happened.
-              });
-        }
+            });
+            }
 
     return (
         <Router>
@@ -37,18 +66,8 @@ const Nav = (props) => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">               
                     {/* any other link goes here */}
-                </ul> 
-                <div class="dropdown">
-                    <button class="btn btn-info btn-sm dropdown-toggle"><span class="badge badge-danger">9</span>&nbsp; user@soton.ac.uk</button>
-                    <div class="dropdown-content">
-                        <a class="dropdown-item" href="#">< FaBell/>&nbsp; Notifications <span class="badge badge-danger">9</span></a>
-                        <Link class="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
-                        <Link class="dropdown-item" to="#"><FaBook/>&nbsp; My Books</Link>
-                        <a class="dropdown-item" href="#"><FaCalendar/>&nbsp; My Calendar</a>
-                        <a class="dropdown-item text-danger" onClick={signOutHandler} href="#"><FaSignOutAlt/>&nbsp; Signout</a>
-                    </div>
-                </div>   
-                {/* <Link to="/login" href="#" className="text-decoration-none">Login</Link> */}
+                </ul>
+                {isUserLoggedIn}
             </div>
         </nav>
         <Switch>
@@ -63,6 +82,10 @@ const Nav = (props) => {
             {/* route to register */}
             <Route path="/register">
                 <RegisterForm/>
+            </Route>
+            {/* route to confirmation */}
+            <Route path="/confirmation">
+                <Confirmation/>
             </Route>
              {/* route to index */}
             <Route path="/">
