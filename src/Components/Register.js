@@ -100,7 +100,7 @@ class RegisterForm extends React.Component{
                 <button type="submit" className="btn btn-primary w-100">Register</button>
                 </form> <br />
                 
-                <small className="d-flex justify-content-center">Already have an account? <a href="#">Login</a></small>
+                <small className="d-flex justify-content-center">Already have an account? <a href="http://localhost:3000/login">Login</a></small>
                 </div>  
             </div>    
         )

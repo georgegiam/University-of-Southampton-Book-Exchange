@@ -11,6 +11,7 @@ import CreateListing from '../Books/CreateListing';
 import LoginForm from '../Components/Login';
 import RegisterForm from '../Components/Register'
 import Confirmation from '../Components/Confirmation'
+import ForgotPass from '../Components/ForgotPass'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
@@ -86,6 +87,10 @@ const Nav = (props) => {
             {/* route to confirmation */}
             <Route path="/confirmation">
                 <Confirmation/>
+            </Route>
+            {/* route to Forgot password */}
+            <Route path="/forgot">
+                <ForgotPass/>
             </Route>
              {/* route to index */}
             <Route path="/">
