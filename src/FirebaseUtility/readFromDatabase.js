@@ -18,3 +18,26 @@ export async function readAllCollection(collectionName, books) {
 
 }
 
+
+export async function readUsersBooks(userID) {
+    var db = firebase.firestore();
+    var mapBooks = new Map();
+    const usersBooks = await db.collection("Users").doc(userID).collection("Books").get();
+    for(var i = 0; i < usersBooks.docs.length; i++){
+        const book = await db.collection("Books").doc(usersBooks.docs[i].id).get();
+        ///// BOOKS here /////
+        mapBooks.set(usersBooks.docs[i].id, book.data());
+    }
+    return mapBooks;
+}
+
+
+export function deleteBookByID(bookID, userID, imageURL) {
+    var db = firebase.firestore();
+    var storage = firebase.storage();
+
+    db.collection("Books").doc(bookID).delete();
+    db.collection("Users").doc(userID).collection("Books").doc(bookID).delete();
+    storage.refFromURL(imageURL).delete();
+}
+

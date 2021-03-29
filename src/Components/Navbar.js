@@ -12,6 +12,7 @@ import LoginForm from '../Components/Login';
 import RegisterForm from '../Components/Register'
 import Confirmation from '../Components/Confirmation'
 import ForgotPass from '../Components/ForgotPass'
+import MyBooks from '../Components/MyBooks'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
@@ -32,7 +33,7 @@ const Nav = (props) => {
                     <div className="dropdown-content">
                         <a className="dropdown-item" href="#">< FaBell/>&nbsp; Notifications <span className="badge badge-danger">9</span></a>
                         <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
-                        <Link className="dropdown-item" to="#"><FaBook/>&nbsp; My Books</Link>
+                        <Link className="dropdown-item" to="/myBooks"><FaBook/>&nbsp; My Books</Link>
                         <a className="dropdown-item" href="#"><FaCalendar/>&nbsp; My Calendar</a>
                         <a className="dropdown-item text-danger" onClick={signOutHandler} href="http://localhost:3000/login"><FaSignOutAlt/>&nbsp; Signout</a>
                     </div>
@@ -91,6 +92,11 @@ const Nav = (props) => {
             {/* route to Forgot password */}
             <Route path="/forgot">
                 <ForgotPass/>
+            </Route>
+            {/* route to Forgot password */}
+            <Route path="/myBooks">
+                <h2>My Books</h2> <hr/>
+                <MyBooks/>
             </Route>
              {/* route to index */}
             <Route path="/">
