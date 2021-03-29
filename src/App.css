@@ -107,3 +107,12 @@ li {
 #social {
   text-decoration: none;
 }
+
+#myBooks {
+  margin-top: 5%;
+  width: 50%;
+}
+
+#book-image {
+  width: 10%;
+}
