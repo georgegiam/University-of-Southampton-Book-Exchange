@@ -18,6 +18,13 @@ export async function readAllCollection(collectionName, books) {
 
 }
 
+// export async function readBookByID(bookID) {
+//     var db = firebase.firestore();
+
+//     const book = await db.collection("Books").doc(bookID).get();
+//     return book.docs.map(doc => doc.data());
+// }
+
 
 export async function readUsersBooks(userID) {
     var db = firebase.firestore();

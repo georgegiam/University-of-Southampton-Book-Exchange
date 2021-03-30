@@ -22,7 +22,8 @@ export function addToCollection(listing) {
             if (user) {
               var uid = user.uid;
               var bookID = docRef.id; 
-              db.collection("Users").doc(uid).collection("Books").doc(docRef.id).set(({}));
+              db.collection("Users").doc(uid).collection("Books").doc(bookID).set(({}));
+              db.collection("Books").doc(bookID).update({ID: bookID});
             } 
           });
 

@@ -1,33 +1,42 @@
-import React from 'react'
+import React, {PureComponent}  from 'react';
 import '../App.css'
 
+import { withRouter } from 'react-router-dom';
 
-function Details(){
+
+class BookDetails extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            book: this.props.location.state.book,
+        };
+    }
+
+    render () {
+        
+        //console.log("This Book details state:", this.state.book);
+
     return (
-        <div class="container" id="book-details-container">           
-            <div class="row">
-                <div class="col text-center">                 
-                    <img class="card-img-top" src="/images/book-sample.jpeg" id="book-image" />        
-                </div>
-                <div class="col">
-                <h3>Python for Dummies</h3>
-                <h6 class="card-subtitle mb-2 text-muted">Used</h6>
-                <h5 class="card-subtitle mb-2 text-muted">9.99$</h5>               
-                            
-                <hr />
+            <div className="container" id="book-details-container">           
+                <div className="row">
+                    <div className="col text-center">                 
+                        <img className="card-img-top" src={this.state.book.bookImageUrl} id="book-image" />        
+                    </div>
+                    <div className="col">
+                    <h3>{this.state.book.bookName}</h3>
+                    <h6 className="card-subtitle mb-2 text-muted">{this.state.book.bookCategory}</h6>
+                    <h5 className="card-subtitle mb-2 text-muted">£{this.state.book.bookPrice}</h5>               
+                                
+                    <hr />
 
-                <p>Lorem ipsum, or lipsum as it is sometimes 
-                known, is dummy text used in laying out print, graphic or web designs. 
-                The passage is attributed to an unknown typesetter in the 15th 
-                century who is thought to have scrambled parts of Cicero's De 
-                Finibus Bonorum et Malorum for use in a type specimen book. It usually b
-                egins with</p> 
-                
-                <button class="btn btn-primary">Buy</button>
+                    <p>{this.state.book.bookDescription}</p> 
+                    
+                    <button className="btn btn-primary">Buy</button>
+                    </div>
                 </div>
-            </div>
-        </div>    
-    )
+            </div>    
+        )
+    }
 }
 
-export default Details
+export default withRouter(BookDetails)

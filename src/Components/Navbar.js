@@ -13,6 +13,7 @@ import RegisterForm from '../Components/Register'
 import Confirmation from '../Components/Confirmation'
 import ForgotPass from '../Components/ForgotPass'
 import MyBooks from '../Components/MyBooks'
+import BookDetails from '../Components/BookDetails'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
@@ -93,10 +94,14 @@ const Nav = (props) => {
             <Route path="/forgot">
                 <ForgotPass/>
             </Route>
-            {/* route to Forgot password */}
+            {/* route to my Books password */}
             <Route path="/myBooks">
                 <h2>My Books</h2> <hr/>
                 <MyBooks/>
+            </Route>
+            {/* route to Book Details password */}
+            <Route path="/details">
+                <BookDetails/>
             </Route>
              {/* route to index */}
             <Route path="/">
