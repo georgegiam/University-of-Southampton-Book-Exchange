@@ -114,5 +114,10 @@ li {
 }
 
 #book-image {
-  width: 10%;
+  width: 50%;
+  height: 100%;
+}
+
+#book-details {
+  margin-top: 7%;
 }

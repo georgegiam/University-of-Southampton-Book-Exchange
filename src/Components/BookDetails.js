@@ -17,7 +17,7 @@ class BookDetails extends PureComponent {
         //console.log("This Book details state:", this.state.book);
 
     return (
-            <div className="container" id="book-details-container">           
+            <div className="container" id="book-details">           
                 <div className="row">
                     <div className="col text-center">                 
                         <img className="card-img-top" src={this.state.book.bookImageUrl} id="book-image" />        
@@ -28,8 +28,8 @@ class BookDetails extends PureComponent {
                     <h5 className="card-subtitle mb-2 text-muted">£{this.state.book.bookPrice}</h5>               
                                 
                     <hr />
-
-                    <p>{this.state.book.bookDescription}</p> 
+                    
+                     <p>{this.state.book.bookDescription}</p> 
                     
                     <button className="btn btn-primary">Buy</button>
                     </div>
