@@ -33,11 +33,13 @@ class Landpage extends PureComponent {
             return (
                     <Aux key={index}>
                         <div className="card" id="book-card">
-                        <a href="#"><img className="card-img-top" src={book.bookImageUrl} alt="Card image cap" /></a>
+                        <img className="card-img-top" src={book.bookImageUrl} alt="Card image cap" />
                         <div className="card-body">
                             <b><h5 className="card-title">{book.bookName}</h5></b>                
                             <h5 className="text-muted">£{book.bookPrice}</h5>
-                            <a onClick={((e) => this.moreInfoHandler(e, book))} value={book} className="btn btn-primary">More Info</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                        <a onClick={((e) => this.moreInfoHandler(e, book))} value={book} className="btn btn-primary float-right">More Info</a>
                         </div>
                     </div>
                     {endTag}

@@ -47,8 +47,6 @@ class App extends Component {
             <Landpage 
             books={this.state.books}></Landpage>
           </div> 
-       
-
         </div>
       );
     }
