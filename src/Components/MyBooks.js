@@ -47,7 +47,7 @@ class MyBooks extends Component {
     render () {
 
         let arrayBooks = [...this.state.bookIds.values()]; // convert it to an array to select we map through and draw them
-        console.log("My Books: ", this.state.bookIds);
+        // console.log("My Books: ", this.state.bookIds);
     return arrayBooks.map((book, index) => {
         return (
             <div className="container" id="myBooks" key={index}>   
@@ -56,7 +56,7 @@ class MyBooks extends Component {
                     <ul className="list-unstyled">
                         {/* book 1 */}
                         <li className="media">
-                            <img className="mr-3" src={book.bookImageUrl} alt="Generic placeholder image" id="book-image"/>
+                            <img className="mr-3" src={book.bookImageUrl} alt="Generic placeholder image" id="mybook-image"/>
                             <div className="media-body">
                                 <h5 className="mt-0 mb-1">{book.bookName}</h5>
                                 <small className="text-muted">Posted: {JSON.stringify(book.created.toDate())}</small><br/>

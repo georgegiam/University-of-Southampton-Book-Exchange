@@ -121,3 +121,8 @@ li {
 #book-details {
   margin-top: 7%;
 }
+
+#mybook-image {
+  width: 10%;
+  height: 100%; 
+}
