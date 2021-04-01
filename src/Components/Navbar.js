@@ -30,9 +30,9 @@ const Nav = (props) => {
                 console.log("NavBar: userlogged in");
                 setStatus(
                     <div className="dropdown">
-                    <button className="btn btn-info btn-sm dropdown-toggle"><span className="badge badge-danger">9</span>&nbsp; {user.email}</button>
+                    <button className="btn btn-info btn-sm dropdown-toggle">{user.email}</button>
                     <div className="dropdown-content">
-                        <a className="dropdown-item" href="#">< FaBell/>&nbsp; Notifications <span className="badge badge-danger">9</span></a>
+                        <a className="dropdown-item" href="#">< FaBell/>&nbsp; Notifications</a>
                         <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
                         <Link className="dropdown-item" to="/myBooks"><FaBook/>&nbsp; My Books</Link>
                         <a className="dropdown-item" href="#"><FaCalendar/>&nbsp; My Calendar</a>
