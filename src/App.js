@@ -39,14 +39,11 @@ class App extends Component {
     if (this.state.books) {
       cardBooks = (
         <div className="container" id="landing">
-
           <h2 className="text-center">University of Southampton Book Exchange</h2>
-
-          <h5 className="text-muted">Featured Books</h5><hr />
-          <div className="card-deck">
+          <h5 className="text-muted">Featured Booggks</h5><hr />
             <Landpage 
-            books={this.state.books}></Landpage>
-          </div> 
+                books={this.state.books}>
+            </Landpage>
         </div>
       );
     }
