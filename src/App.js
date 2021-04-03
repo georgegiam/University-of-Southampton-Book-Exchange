@@ -38,9 +38,30 @@ class App extends Component {
 
     if (this.state.books) {
       cardBooks = (
-        <div className="container" id="landing">
-          <h2 className="text-center">University of Southampton Book Exchange</h2>
-          <h5 className="text-muted">Featured Booggks</h5><hr />
+
+          <div className="container w-50" id="landing">
+            
+            <div className="container-fluid text-center">
+            <img src="images/logo.png" width="130" height="130"/>
+            </div>
+          
+          <h2 className="text-center">University of Southampton Book Exchange</h2><br/>
+
+          <div className="container-fluid text-center w-50">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search a book..."/>
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button">Search</button>
+              </div>
+            </div>
+          </div><br/>
+
+         
+      
+              <h5 className="text-muted">Featured Books</h5>
+              
+          
+        <hr />
             <Landpage 
                 books={this.state.books}>
             </Landpage>
