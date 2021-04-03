@@ -50,8 +50,7 @@ class MyBooks extends Component {
         // console.log("My Books: ", this.state.bookIds);
     return arrayBooks.map((book, index) => {
         return (
-            <div className="container" id="myBooks" key={index}>   
-                <div className="container-fluid">
+                <div className="container-fluid" key={index}>
                     {/* <h2>My Books</h2> <hr/> */}
                     <ul className="list-unstyled">
                         {/* book 1 */}
@@ -67,7 +66,7 @@ class MyBooks extends Component {
                         </li><br/>
                     </ul>
                 </div>
-            </div>    
+     
             );
     });
 }

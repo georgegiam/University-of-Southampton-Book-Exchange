@@ -98,8 +98,13 @@ const Nav = (props) => {
             </Route>
             {/* route to my Books password */}
             <Route path="/myBooks">
-                <h2>My Books</h2> <hr/>
-                <MyBooks/>
+                <div className="container" id="myBooks">
+                  
+                        <h2>My Books</h2> <hr/>
+                        <MyBooks/>
+           
+                </div>
+                
             </Route>
             {/* route to Book Details password */}
             <Route path="/details">

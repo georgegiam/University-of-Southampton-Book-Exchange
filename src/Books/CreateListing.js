@@ -68,7 +68,7 @@ class CreateListing extends PureComponent {
         return (
             <div className="container" id="addBook">
                 <div className="container-fluid">
-                    <h2>Add new book</h2><br/>
+                    <h2>Add new book</h2><hr/>
 
                     <form onSubmit={this.submitHandler}>
                         {/* title */}
