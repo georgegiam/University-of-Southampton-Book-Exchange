@@ -3,6 +3,8 @@ import '../App.css'
 
 import { withRouter } from 'react-router-dom';
 
+import * as Firebase from "../FirebaseUtility/notification";
+import firebase from "../FirebaseUtility/firebaseSetup";
 
 class BookDetails extends PureComponent {
     constructor(props) {
@@ -12,9 +14,22 @@ class BookDetails extends PureComponent {
         };
     }
 
+    buyHandler = (event) => {
+        // Check to see if the user is logged in, if not re-direct them to the login page here
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              Firebase.addAppointment(this.state.book.ID, this.state.book.bookName, this.state.book.bookDescription, this.state.book.bookPrice, user.uid, user.email , this.state.book.sellerID);
+        //alert('Bought button pressed');
+            } else {
+                alert("Please Login First!");
+                //history.push("/login");
+            }
+          });
+    }
+
     render () {
         
-        //console.log("This Book details state:", this.state.book);
+        console.log("This Book details state:", this.state.book);
 
     return (
             <div className="container" id="book-details">           
@@ -31,7 +46,7 @@ class BookDetails extends PureComponent {
                     
                      <p>{this.state.book.bookDescription}</p> 
                     
-                    <button className="btn btn-primary">Buy</button>
+                    <button className="btn btn-primary" onClick={this.buyHandler}>Buy</button>
                     </div>
                 </div>
             </div>    

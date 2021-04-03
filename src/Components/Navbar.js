@@ -14,11 +14,13 @@ import Confirmation from '../Components/Confirmation'
 import ForgotPass from '../Components/ForgotPass'
 import MyBooks from '../Components/MyBooks'
 import BookDetails from '../Components/BookDetails'
+import MyNotifications from '../Components/myNotifications'
+import MyPurchases from '../Components/myPurchases'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
 // react icons
-import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt, FaSignInAlt } from 'react-icons/fa';
+import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt, FaMoneyBill } from 'react-icons/fa';
 
 const Nav = (props) => {
     
@@ -32,9 +34,10 @@ const Nav = (props) => {
                     <div className="dropdown">
                     <button className="btn btn-info btn-sm dropdown-toggle">{user.email}</button>
                     <div className="dropdown-content">
-                        <a className="dropdown-item" href="#">< FaBell/>&nbsp; Notifications</a>
+                        <Link className="dropdown-item" to="/myNotifications">< FaBell/>&nbsp; Notifications</Link>
                         <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
                         <Link className="dropdown-item" to="/myBooks"><FaBook/>&nbsp; My Books</Link>
+                        <Link className="dropdown-item" to="/myPurchases">< FaMoneyBill/>&nbsp; My Purchases</Link>
                         <a className="dropdown-item" href="#"><FaCalendar/>&nbsp; My Calendar</a>
                         <a className="dropdown-item text-danger" onClick={signOutHandler} href="http://localhost:3000/login"><FaSignOutAlt/>&nbsp; Signout</a>
                     </div>
@@ -102,6 +105,14 @@ const Nav = (props) => {
             {/* route to Book Details password */}
             <Route path="/details">
                 <BookDetails/>
+            </Route>
+            {/* route to Notifcations password */}
+            <Route path="/myNotifications">
+                <MyNotifications/>
+            </Route>
+            {/* route to Purchase Details password */}
+            <Route path="/myPurchases">
+                <MyPurchases/>
             </Route>
              {/* route to index */}
             <Route path="/">

@@ -67,6 +67,14 @@ li {
   margin-bottom: 5px;
 }
 
+.card2 {
+  min-width: 100%;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 .dropbtn {
   color: white;
   padding: 16px;

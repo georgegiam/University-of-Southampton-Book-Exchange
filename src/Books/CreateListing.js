@@ -14,6 +14,7 @@ class CreateListing extends PureComponent {
             price: 0,
             bookDescription: '',
             imageFile: '',
+            userID: '',
         };
 
 
@@ -58,7 +59,7 @@ class CreateListing extends PureComponent {
               // https://firebase.google.com/docs/reference/js/firebase.User
               var uid = user.uid;
               console.log("uid: " + uid);
-              this.setState({isLoggedIn: true})
+              this.setState({userID: uid})
             } else {
                 //alert("Please Login First!");
                 history.push("/login");
