@@ -46,23 +46,26 @@ export async function readUsersAppointments(userID) {
 
 export async function readUsersPurchases(userID) {
     var db = firebase.firestore();
-    var statues = [];
+    var exchanges = [];
     const purchases = await db.collection("Users").doc(userID).collection("Purchases").get();
     for(var i = 0; i < purchases.docs.length; i++) {
         var item = purchases.docs[i].data();
-        var status = await getStatus(item.sellerId, item.tracking);
-        console.log('STATUS: ', status);
-        statues.push(status);
+        var exchange = await getStatus(item.sellerId, item.tracking);
+        console.log('STATUS: ', exchange);
+        exchanges.push(exchange);
     }
-    return [purchases.docs.map(doc => doc.data()), statues];
+    return [purchases.docs.map(doc => doc.data()), exchanges];
 }
 
 export async function getStatus(sellerId, trackingNumber) {
     var db = firebase.firestore();
-    const status = await db.collection("Users").doc(sellerId).collection("Appointments").doc(trackingNumber).get();
-    return status.data().status;
+    const exchange = await db.collection("Users").doc(sellerId).collection("Appointments").doc(trackingNumber).get();
+    const data = exchange.data();
+    if(data) {
+        return exchange.data();
+    }
+    return {status: 'declined', time: 'declined', date: 'declined', location: 'delined'};
 }
-
 
 export function deleteBookByID(bookID, userID, imageURL) {
     var db = firebase.firestore();

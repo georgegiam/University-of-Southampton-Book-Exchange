@@ -22,7 +22,8 @@ class Landpage extends PureComponent {
     render() {
 
         return <div className="w-100" style={{flexWrap: "wrap", display: "flex", justifyContent: "center"}}> {this.props.books.map((book, index) => {
-            return (
+            if(book.isAvailable) {
+                return (
                     <div key={index} className="card" id="book-card">
                         <img className="card-img-top" src={book.bookImageUrl} alt="Card image cap" />
                         <div className="card-body">
@@ -34,6 +35,7 @@ class Landpage extends PureComponent {
                         </div>
                     </div>
                 );
+            }
             }) 
         } </div>
     }

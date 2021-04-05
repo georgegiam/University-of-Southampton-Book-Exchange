@@ -9,7 +9,7 @@ class MyPurchases extends Component {
         super(props);
         this.state = {
             purchases: [],
-            currentStatus: ""
+            currentExchange: [],
         };
     }
 
@@ -20,7 +20,7 @@ class MyPurchases extends Component {
               const fetchData = async () => {
                 const response = await Firebase.readUsersPurchases(uid);
                 this.setState({ purchases: response[0] });
-                this.setState({ currentStatus: response[1]})
+                this.setState({ currentExchange: response[1] });
               };
               fetchData();
             }
@@ -30,20 +30,24 @@ class MyPurchases extends Component {
     render () {
 
         console.log("My purchases: ", this.state.purchases);
+        //console.log("My Exchanges: ", this.state.currentExchange);
 
     return <div className="list-group"> {this.state.purchases.map((bookItem, index) => {
-        console.log('Gonna get status!')
-        return (
+        if(this.state.currentExchange.length > 0) {
+            return (
                 <a key={index} href="#" className="list-group-item list-group-item-action flex-column align-items-start active">
                 <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">Book Name: {bookItem.bookName}</h5>
-                <small>Purchase date: 3 days ago</small>
-                <small>Status: {this.state.currentStatus[index]}</small>
+                <small>Exchange Date: {this.state.currentExchange[index].date} </small>
+                <small>Exchange Time: {this.state.currentExchange[index].time}</small>
+                <small>Status: {this.state.currentExchange[index].status}</small>
                 </div>
                 <p className="mb-1">£{bookItem.bookPrice}</p>
-                <small>{bookItem.bookDescription}</small>
+                <small>Exchange Location: {this.state.currentExchange[index].location}</small>
                 </a>
             );
+        } 
+
         }) 
     } </div>
     

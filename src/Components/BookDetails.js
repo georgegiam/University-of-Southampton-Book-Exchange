@@ -18,8 +18,14 @@ class BookDetails extends PureComponent {
         // Check to see if the user is logged in, if not re-direct them to the login page here
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              Firebase.addAppointment(this.state.book.ID, this.state.book.bookName, this.state.book.bookDescription, this.state.book.bookPrice, user.uid, user.email , this.state.book.sellerID);
-        //alert('Bought button pressed');
+                if(user.uid === this.state.book.sellerID) {
+                    alert('Cant buy your own book!')
+                    return;
+                } 
+                Firebase.addAppointment(this.state.book.ID, this.state.book.isAvailable, this.state.book.bookName, this.state.book.bookDescription, this.state.book.bookPrice, user.uid, user.email ,this.state.book.sellerID, this.state.book.sellerEmail);
+                var latestBook = this.state.book;
+                latestBook.isAvailable = false;
+                this.setState({book: latestBook}); // TODO: What happens when they referesh, we might be better fetching the book here again to get the latest value?
             } else {
                 alert("Please Login First!");
                 //history.push("/login");
