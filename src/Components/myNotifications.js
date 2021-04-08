@@ -89,36 +89,59 @@ class MyNotifications extends Component {
           showAccpetedButton = false;
         }
         return (
-          <Aux key={index}>
-            <div className="card2" key={index}>
-            <h5 className="card-header">Book Name: {appoint.bookName}</h5>
-            <div className="card-body">
-              <h5 className="card-title">Buyer Email: {appoint.buyerEmail}</h5>
-              <p className="card-text">Status: {appoint.status}</p>
-              <p className="card-text">Date: {appoint.date}  Time: {appoint.time}</p>
-              <button id={appoint.ID} className="btn btn-primary" onClick={this.showModal} disabled={!showAccpetedButton}>Accept</button>
-              <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}>Decline</a>
-              <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)}>Mark as Sold</a>
+          <div className="container" id="notifications">
+            <div className="container-fluid">
+              <h2>My notifications</h2><hr/>
+            <Aux key={index}>
+            <div className="list-group-item list-group-item-warning" key={index}>
+            <div className="d-flex w-100 justify-content-between">
+              <h5 class="mt-0">{appoint.bookName}</h5>
+              <p className="card-text"><span class="badge badge-info">{appoint.status}</span> </p>
             </div>
+             
+   
+              
+                <h5 className="card-title">Buyer Email: {appoint.buyerEmail}</h5>
+                
+                <p className="card-text">Date and Time: {appoint.date} {appoint.time}</p>
+                <button id={appoint.ID} className="btn btn-success" onClick={this.showModal} disabled={!showAccpetedButton}>Accept</button>&nbsp;
+                <a href="#" id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}>Decline</a>&nbsp;
+                <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)}>Mark as Sold</a>
+              
           </div> 
 
 
-            <Modal show={this.state.isOpen}>
-              <Modal.Header>
-                <Modal.Title>Appointment Scheduler</Modal.Title>
+            <Modal className="modal fade" show={this.state.isOpen}>
+              <Modal.Header className="modal-header">
+                <Modal.Title className="modal-title">Appointment Scheduler</Modal.Title>
               </Modal.Header>
-              <Modal.Body>Please select a date and time for the book exhange:
-                <input type="date" className="form-control" id="date" name="date" onChange={this.changeHandler}/>
-                <input type="time" className="form-control" id="time" name="time" onChange={this.changeHandler}/>
-                <input type="text" className="form-control" id="location" name="location" onChange={this.changeHandler} placeholder="Appointment Location"/>
+              <Modal.Body className="modal-body">
+                Please select a date and time for the book exhange:
+                <div class="form-group">
+                  <input type="date" className="form-control" id="date" name="date" onChange={this.changeHandler} />
+                </div>
+
+                <div class="form-group">
+                  <input type="time" className="form-control" id="time" name="time" onChange={this.changeHandler} required/>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" className="form-control" id="location" name="location" onChange={this.changeHandler} placeholder="Appointment Location" required/>
+                </div>
+                
+                
+                
               </Modal.Body>
-              <Modal.Footer>
-                <button onClick={this.hideModal}>Cancel</button>
-                <button onClick={(e) => this.setDateandTimeHandler(e, appoint.bookId, index, appoint.ID)}>Save</button>
+              <Modal.Footer className="modal-footer">
+                <button class="btn btn-danger" onClick={this.hideModal}>Cancel</button>
+                <button class="btn btn-primary" onClick={(e) => this.setDateandTimeHandler(e, appoint.bookId, index, appoint.ID)}>Save</button>
               </Modal.Footer>
           </Modal>
           
         </Aux>
+            </div>
+          </div>
+          
             );
     });
 }
