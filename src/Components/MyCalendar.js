@@ -22,7 +22,7 @@ function Calendar() {
                             <li class="list-inline-item"><FaStopwatch/> 2:00 PM</li>
                             <li class="list-inline-item"><FaLocationArrow/> Cafe</li>
                         </ul>
-                        <p>25$</p>
+                        <h4 className="text-muted">25$</h4>
                     </div>
                 </div>
             </div>
