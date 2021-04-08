@@ -15,6 +15,9 @@ export function addToCollection(listing) {
           bookDescription: listing.bookDescription,
           bookImageUrl: imageUrl,
           created: firebase.firestore.FieldValue.serverTimestamp(),
+          sellerID: listing.userID,
+          sellerEmail: listing.userEmail,
+          isAvailable: true,
         })
         .then((docRef) => {
           console.log("Document written with ID: ", docRef.id);

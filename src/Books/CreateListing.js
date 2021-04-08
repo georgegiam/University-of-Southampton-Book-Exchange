@@ -14,6 +14,8 @@ class CreateListing extends PureComponent {
             price: 0,
             bookDescription: '',
             imageFile: '',
+            userID: '',
+            userEmail: '',
         };
 
 
@@ -54,11 +56,10 @@ class CreateListing extends PureComponent {
         const {history} = this.props; // TODO: This needs to improved as were making multiple render calls here
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
               var uid = user.uid;
               console.log("uid: " + uid);
-              this.setState({isLoggedIn: true})
+              this.setState({userID: uid});
+              this.setState({userEmail: user.email});
             } else {
                 //alert("Please Login First!");
                 history.push("/login");
