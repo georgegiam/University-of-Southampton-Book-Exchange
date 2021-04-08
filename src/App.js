@@ -12,7 +12,8 @@ import Nav from "./Components/Navbar";
 import CreateListing from './Books/CreateListing'
 
 import * as Firebase from "./FirebaseUtility/readFromDatabase";
-
+import { Typeahead } from 'react-bootstrap-typeahead';
+// import Autocomplete from "./Autocomplete";
 
 class App extends Component {
   constructor(props) {
@@ -21,29 +22,44 @@ class App extends Component {
 
   state = {
     books: [],
+    bookAutoComplete: [],
     searchQuery: '',
   };
 
   componentDidMount() {
     const fetchData = async () => {
       let newBooks = [];
+      let newAuto = [];
       const response = await Firebase.readAllCollection("Books", newBooks);
       this.setState({ books: response });
+      for(var i = 0; i < response.length; i++) {
+          newAuto.push(response[i].bookName);
+      }
+      this.setState({ bookAutoComplete: newAuto });
     };
     fetchData();
     console.log("Calling Did mount");
   }
 
   searchHandler =(event) => {
-    const fetchData = async () => {
-      const response = await Firebase.searchBookByTitle(this.state.searchQuery);
-      this.setState({ books: response });
-    };
-    fetchData();
+    if(this.state.searchQuery.length > 0) {
+      const fetchData = async () => {
+        console.log(event);
+        const response = await Firebase.searchBookByTitle(this.state.searchQuery[0]);
+        this.setState({ books: response });
+      };
+      fetchData();
+    } else {
+      alert('No match found, please use the autocomplete suggestions for their names');
+    }
+
   }
 
   changeHandler = (event) => {
-    this.setState({searchQuery: event.target.value});
+    if(event) {
+      this.setState({searchQuery: event});
+    }
+
 }
 
   render() {
@@ -54,16 +70,26 @@ class App extends Component {
       cardBooks = (
 
           <div className="container w-50" id="landing">
-            
             <div className="container-fluid text-center">
             <img src="images/logo.png" width="130" height="130"/>
             </div>
           
           <h2 className="text-center">University of Southampton Book Exchange</h2><br/>
-
           <div className="container-fluid text-center w-50">
           <div class="input-group">
+<<<<<<< Updated upstream
               <input type="text" class="form-control" placeholder="Search a book by name..." id="search"/>
+=======
+            <Typeahead
+              id="example"
+              onChange={this.changeHandler}
+              options={this.state.bookAutoComplete}
+              placeholder="Search by book title"
+              selected={this.state.searchQuery}>
+          </Typeahead>
+
+              {/* <input type="text" class="form-control" placeholder="Search a book..." id="search" onChange={this.changeHandler}/> */}
+>>>>>>> Stashed changes
               <div class="input-group-append">
                 <button class="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
               </div>
