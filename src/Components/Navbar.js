@@ -46,7 +46,7 @@ const Nav = (props) => {
             } else {
                 console.log("NavBar: userlogged NOT in");
                 setStatus(
-                    <Link to="/login" href="#" className="text-decoration-none">Login</Link>
+                    <Link to="/login" href="#" class="btn btn-outline-primary btn-sm">Login/Signup</Link>
                 );
             }
           });

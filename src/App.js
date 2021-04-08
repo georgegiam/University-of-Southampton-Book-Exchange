@@ -63,7 +63,11 @@ class App extends Component {
 
           <div className="container-fluid text-center w-50">
           <div class="input-group">
+<<<<<<< HEAD
               <input type="text" class="form-control" placeholder="Search a book..." id="search" onChange={this.changeHandler}/>
+=======
+              <input type="text" class="form-control" placeholder="Search a book by name..." id="search"/>
+>>>>>>> 315ec1764564600efbe6a2fc647d3502eee59ab3
               <div class="input-group-append">
                 <button class="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
               </div>
