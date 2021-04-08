@@ -36,6 +36,7 @@ class App extends Component {
   render() {
     let cardBooks = null;
 
+
     if (this.state.books) {
       cardBooks = (
 
@@ -49,10 +50,11 @@ class App extends Component {
 
           <div className="container-fluid text-center w-50">
           <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search a book..."/>
+              <input type="text" class="form-control" placeholder="Search a book..." id="search" value="search"/>
               <div class="input-group-append">
                 <button class="btn btn-outline-primary" type="button">Search</button>
               </div>
+              <div id="match-list"></div>
             </div>
           </div><br/>
 
