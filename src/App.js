@@ -21,6 +21,7 @@ class App extends Component {
 
   state = {
     books: [],
+    searchQuery: '',
   };
 
   componentDidMount() {
@@ -32,6 +33,18 @@ class App extends Component {
     fetchData();
     console.log("Calling Did mount");
   }
+
+  searchHandler =(event) => {
+    const fetchData = async () => {
+      const response = await Firebase.searchBookByTitle(this.state.searchQuery);
+      this.setState({ books: response });
+    };
+    fetchData();
+  }
+
+  changeHandler = (event) => {
+    this.setState({searchQuery: event.target.value});
+}
 
   render() {
     let cardBooks = null;
@@ -50,19 +63,16 @@ class App extends Component {
 
           <div className="container-fluid text-center w-50">
           <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search a book..." id="search" value="search"/>
+              <input type="text" class="form-control" placeholder="Search a book..." id="search" onChange={this.changeHandler}/>
               <div class="input-group-append">
-                <button class="btn btn-outline-primary" type="button">Search</button>
+                <button class="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
               </div>
               <div id="match-list"></div>
             </div>
           </div><br/>
 
-         
-      
-              <h5 className="text-muted">Featured Books</h5>
+          <h5 className="text-muted">Featured Books</h5>
               
-          
         <hr />
             <Landpage 
                 books={this.state.books}>
