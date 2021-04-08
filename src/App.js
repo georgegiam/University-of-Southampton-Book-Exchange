@@ -1,14 +1,13 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RegisterForm from './Components/Register'
-import Nav from './Components/Navbar'
+import Calendar from './Components/MyCalendar'
+
 
 function App() {
   return (
-    <div>
-      <Nav />
-      <RegisterForm />    
-    </div>
+
+      <Calendar />    
+
 
   );
 }
