@@ -41,7 +41,7 @@ class MyPurchases extends Component {
                 <li key={index} href="#" className="list-group-item list-group-item-info flex-column align-items-start">
                     <div className="d-flex w-100 justify-content-between">
                         <h5 className="mb-1">{bookItem.bookName}</h5>
-                        <small><span class="badge badge-warning">{this.state.currentExchange[index].status}</span> </small>
+                        <small><span className="badge badge-warning">{this.state.currentExchange[index].status}</span> </small>
                     </div>
                     <p className="mb-1">£{bookItem.bookPrice}</p>
                     <div className="d-flex w-100 justify-content-between">

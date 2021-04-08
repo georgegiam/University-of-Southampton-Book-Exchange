@@ -5,11 +5,9 @@ import "./App.css";
 // bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 // components
 import Landpage from "./Components/LandingPage";
 import Nav from "./Components/Navbar";
-import CreateListing from './Books/CreateListing'
 
 import * as Firebase from "./FirebaseUtility/readFromDatabase";
 import { Typeahead } from 'react-bootstrap-typeahead';
@@ -23,10 +21,10 @@ class App extends Component {
   state = {
     books: [],
     bookAutoComplete: [],
-    searchQuery: '',
+    searchQuery: [],
   };
 
-  componentDidMount() {
+  getBooks = async () => {
     const fetchData = async () => {
       let newBooks = [];
       let newAuto = [];
@@ -38,7 +36,11 @@ class App extends Component {
       this.setState({ bookAutoComplete: newAuto });
     };
     fetchData();
+  }
+
+  componentDidMount() {
     console.log("Calling Did mount");
+    this.getBooks()
   }
 
   searchHandler =(event) => {
@@ -53,6 +55,12 @@ class App extends Component {
       alert('No match found, please use the autocomplete suggestions for their names');
     }
 
+  }
+
+  clearHandler = (event) => {
+    console.log('Clear: ', this.state);
+    this.setState({searchQuery: []});
+    this.getBooks();
   }
 
   changeHandler = (event) => {
@@ -76,7 +84,7 @@ class App extends Component {
           
           <h2 className="text-center">University of Southampton Book Exchange</h2><br/>
           <div className="container-fluid text-center w-50">
-          <div class="input-group">
+          <div className="input-group">
             <Typeahead
               id="example"
               onChange={this.changeHandler}
@@ -84,10 +92,9 @@ class App extends Component {
               placeholder="Search by book title"
               selected={this.state.searchQuery}>
           </Typeahead>
-
-              {/* <input type="text" class="form-control" placeholder="Search a book..." id="search" onChange={this.changeHandler}/> */}
-              <div class="input-group-append">
-                <button class="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
+              <div className="input-group-append">
+              <button className="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
+              <button className="btn btn-outline-primary" type="button" onClick={this.clearHandler}>Clear</button>
               </div>
               <div id="match-list"></div>
             </div>

@@ -95,8 +95,8 @@ class MyNotifications extends Component {
             <Aux key={index}>
             <div className="list-group-item list-group-item-warning" key={index}>
             <div className="d-flex w-100 justify-content-between">
-              <h5 class="mt-0">{appoint.bookName}</h5>
-              <p className="card-text"><span class="badge badge-info">{appoint.status}</span> </p>
+              <h5 className="mt-0">{appoint.bookName}</h5>
+              <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
             </div>
              
    
@@ -117,15 +117,15 @@ class MyNotifications extends Component {
               </Modal.Header>
               <Modal.Body className="modal-body">
                 Please select a date and time for the book exhange:
-                <div class="form-group">
+                <div className="form-group">
                   <input type="date" className="form-control" id="date" name="date" onChange={this.changeHandler} />
                 </div>
 
-                <div class="form-group">
+                <div className="form-group">
                   <input type="time" className="form-control" id="time" name="time" onChange={this.changeHandler} required/>
                 </div>
 
-                <div class="form-group">
+                <div className="form-group">
                   <input type="text" className="form-control" id="location" name="location" onChange={this.changeHandler} placeholder="Appointment Location" required/>
                 </div>
                 
@@ -133,8 +133,8 @@ class MyNotifications extends Component {
                 
               </Modal.Body>
               <Modal.Footer className="modal-footer">
-                <button class="btn btn-danger" onClick={this.hideModal}>Cancel</button>
-                <button class="btn btn-primary" onClick={(e) => this.setDateandTimeHandler(e, appoint.bookId, index, appoint.ID)}>Save</button>
+                <button className="btn btn-danger" onClick={this.hideModal}>Cancel</button>
+                <button className="btn btn-primary" onClick={(e) => this.setDateandTimeHandler(e, appoint.bookId, index, appoint.ID)}>Save</button>
               </Modal.Footer>
           </Modal>
           

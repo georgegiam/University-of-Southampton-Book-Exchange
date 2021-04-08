@@ -35,12 +35,12 @@ const Confirmation = () => {
 
     return (
         <div>
-             <div class="jumbotron text-center">
-            <h1 class="display-3">Thank you for signing up for University of Southampton Book Exchange</h1>
-            <p class="lead">You can now login and sell your own books!</p>
+             <div className="jumbotron text-center">
+            <h1 className="display-3">Thank you for signing up for University of Southampton Book Exchange</h1>
+            <p className="lead">You can now login and sell your own books!</p>
             <hr/>
-            <p class="lead">
-                <a class="btn btn-primary btn-sm" href="http://localhost:3000/" role="button">Continue to homepage</a>
+            <p className="lead">
+                <a className="btn btn-primary btn-sm" href="http://localhost:3000/" role="button">Continue to homepage</a>
             </p>
             </div>
         </div>
