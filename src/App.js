@@ -77,9 +77,6 @@ class App extends Component {
           <h2 className="text-center">University of Southampton Book Exchange</h2><br/>
           <div className="container-fluid text-center w-50">
           <div class="input-group">
-<<<<<<< Updated upstream
-              <input type="text" class="form-control" placeholder="Search a book by name..." id="search"/>
-=======
             <Typeahead
               id="example"
               onChange={this.changeHandler}
@@ -89,7 +86,6 @@ class App extends Component {
           </Typeahead>
 
               {/* <input type="text" class="form-control" placeholder="Search a book..." id="search" onChange={this.changeHandler}/> */}
->>>>>>> Stashed changes
               <div class="input-group-append">
                 <button class="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
               </div>
