@@ -1,5 +1,4 @@
 import firebase from "./firebaseSetup";
-import * as Email from '../EmailUtility/sendEmails'; 
 
 
 export async function sendBuyerNotification() {
