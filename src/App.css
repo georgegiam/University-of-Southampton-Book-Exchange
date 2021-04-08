@@ -120,7 +120,7 @@ li {
   text-decoration: none;
 }
 
-#myBooks {
+#myBooks, #purchases {
   margin-top: 5%;
   width: 50%;
 }
