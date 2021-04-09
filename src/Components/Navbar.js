@@ -32,7 +32,7 @@ const Nav = (props) => {
                 console.log("NavBar: userlogged in");
                 setStatus(
                     <div className="dropdown">
-                    <button className="btn btn-info btn-sm dropdown-toggle">{user.email}</button>
+                    <button className="btn btn-info btn-sm dropdown-toggle"><span class="badge badge-danger">9</span>&nbsp;{user.email}</button>
                     <div className="dropdown-content">
                         <Link className="dropdown-item" to="/myNotifications">< FaBell/>&nbsp; Notifications</Link>
                         <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
