@@ -87,9 +87,6 @@ const LoginForm = () => {
 
                 <a href="#" id="social">
                     <FaGoogle onClick={() => googleHandler("google")}/>
-                </a>&nbsp;
-                <a href="#">
-                    <FaFacebook onClick={() => googleHandler("facebook")}/>
                 </a>
             </div><br/>
             
