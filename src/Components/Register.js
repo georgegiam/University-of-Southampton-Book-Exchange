@@ -13,7 +13,9 @@ class RegisterForm extends React.Component{
         this.state = {
           email: '',
           pass: '',
-          repeatPass: ''
+          repeatPass: '',
+          firstName: '',
+          lastName: '',
         };
         
         this.handleChange = this.handleChange.bind(this);
@@ -23,6 +25,14 @@ class RegisterForm extends React.Component{
     // getting the email
     handleChange(event) {
         this.setState({email: event.target.value});
+      }
+
+    handleFirstname = (event) => {
+        this.setState({firstName: event.target.value});
+      }
+      
+    handleLastname = (event) => {
+        this.setState({lastName: event.target.value});
       }
 
     handlePassChange = (event) => {
@@ -56,6 +66,8 @@ class RegisterForm extends React.Component{
             .then(() => {
                 window.localStorage.setItem('emailForSignIn', this.state.email);
                 window.localStorage.setItem('passForSignIn', this.state.pass);
+                window.localStorage.setItem('firstNameForSignIn', this.state.firstName);
+                window.localStorage.setItem('lastNameForSignIn', this.state.lastName);
                 alert("Please check your email for verfication");
             }).catch((error) => {
                 var errorMessage = error.message;
@@ -75,11 +87,11 @@ class RegisterForm extends React.Component{
                 <div className="form-row">
                     {/* First Name */}
                     <div className="form-group col-md-6">         
-                        <input type="text" className="form-control" name ="pass" id="inputCity" onChange={this.handlePassChange} placeholder="First Name" required />
+                        <input type="text" className="form-control" name ="pass" id="inputCity" onChange={this.handleFirstname} placeholder="First Name" required />
                     </div>    
                     {/* Last Name */}
                     <div className="form-group col-md-6">      
-                        <input type="text" className="form-control" id="inputZip" onChange={this.handleRepeatPassChange} placeholder="Last Name" required />
+                        <input type="text" className="form-control" id="inputZip" onChange={this.handleLastname} placeholder="Last Name" required />
                     </div>
                 </div>
                 {/* Email */}

@@ -35,7 +35,7 @@ export async function sendBuyerNotification() {
   }
 }
 
-export async function addAppointment(bookId, isAvailable, bookName, bookDescription, bookPrice, buyerId, buyerEmail, sellerId, sellerEmail) {
+export async function addAppointment(bookId, isAvailable, bookName, bookDescription, bookPrice, buyerId, buyerEmail, sellerId, buyerName) {
   var db = firebase.firestore();
 
   if (!isAvailable) {
@@ -49,8 +49,10 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
     .add({
       sellerId: sellerId,
       buyerEmail: buyerEmail,
+      buyerName: buyerName,
       date: "Pending",
       time: "Pending",
+      location: "Pending",
       bookName: bookName,
       status: "pending",
       bookId: bookId,
@@ -74,7 +76,7 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
 
       db.collection("Users").doc(sellerId).update({newNotfity: firebase.firestore.FieldValue.increment(1)})
       .catch((error) => {
-        db.collection("Users").doc(sellerId).update({newNotfity: 1});
+        db.collection("Users").doc(sellerId).set({newNotfity: 1}, {merge: true});
       })
 
     })

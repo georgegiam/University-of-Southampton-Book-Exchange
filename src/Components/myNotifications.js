@@ -72,9 +72,10 @@ class MyNotifications extends Component {
                 <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
               </div>
                   
-              <h5 className="card-title">Buyer Email: {appoint.buyerEmail}</h5>
+              <h5 className="card-title">Buyer Email: {appoint.buyerEmail} Buyer Name: {appoint.buyerName}</h5>
                 
-              <p className="card-text">Date and Time: {appoint.date} {appoint.time}</p>
+              <p className="card-text">Date: {appoint.date}  Time: {appoint.time}</p>
+              <p className="card-text">Location: {appoint.location}</p>
               <button id={appoint.ID} className="btn btn-success" onClick={() => this.showModal(appoint)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
               <a href="#" id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}>Decline</a>&nbsp;
               <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)}>Mark as Sold</a>

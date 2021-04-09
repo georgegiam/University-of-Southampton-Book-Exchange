@@ -12,12 +12,17 @@ const Confirmation = () => {
         if(firebase.auth().isSignInWithEmailLink(window.location.href)) {
             var email = window.localStorage.getItem('emailForSignIn');
             var pass = window.localStorage.getItem('passForSignIn');
+            var firstName = window.localStorage.getItem('firstNameForSignIn');
+            var lastName = window.localStorage.getItem('lastNameForSignIn');
             // TODO: if the above is empty that means they are opening it from another device - re-ask them again
     
             firebase.auth().createUserWithEmailAndPassword(email, pass)
-                .then((userCredential) => {
+                .then(function(user) {
                     // User is signed in here
                     //history.push("/");
+                    user.user.updateProfile({
+                        displayName: firstName + " " + lastName
+                      });
                     window.localStorage.removeItem('emailForSignIn');
                     window.localStorage.removeItem('passForSignIn');
                 })
