@@ -70,8 +70,18 @@ class RegisterForm extends React.Component{
         return (
             <div className="container" id="register">   
                 <div className="container-fluid">
-                <h3>Create an Account</h3><br />
+                <h3>Create an Account</h3><hr />
                 <form onSubmit={this.handleSubmit}>
+                <div className="form-row">
+                    {/* First Name */}
+                    <div className="form-group col-md-6">         
+                        <input type="text" className="form-control" name ="pass" id="inputCity" onChange={this.handlePassChange} placeholder="First Name" required />
+                    </div>    
+                    {/* Last Name */}
+                    <div className="form-group col-md-6">      
+                        <input type="text" className="form-control" id="inputZip" onChange={this.handleRepeatPassChange} placeholder="Last Name" required />
+                    </div>
+                </div>
                 {/* Email */}
                 <div className="form-group">             
                     <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.handleChange} id="inputAddress" placeholder="Email" required />
