@@ -64,7 +64,7 @@ const LoginForm = () => {
 
     return (
         <div className="container" id="login">   
-            <h3>Login to your account</h3><br />
+            <h3>Login to your account</h3><hr />
             <form onSubmit={submitHandler}>           
             {/* Email */}
             <div className="form-group">             
