@@ -14,9 +14,9 @@ class BookDetails extends PureComponent {
         };
     }
 
-    buyHandler = (event) => {
-        // Check to see if the user is logged in, if not re-direct them to the login page here
-        firebase.auth().onAuthStateChanged((user) => {
+    buyHandler() {
+        const {history} = this.props
+        var user = firebase.auth().currentUser
             if (user) {
                 if(user.uid === this.state.book.sellerID) {
                     alert('Cant buy your own book!')
@@ -27,10 +27,9 @@ class BookDetails extends PureComponent {
                 latestBook.isAvailable = false;
                 this.setState({book: latestBook}); // TODO: What happens when they referesh, we might be better fetching the book here again to get the latest value?
             } else {
-                alert("Please Login First!");
-                //history.push("/login");
+                alert("Please Login First");
+                history.push("/login");
             }
-          });
     }
 
     render () {
@@ -52,7 +51,7 @@ class BookDetails extends PureComponent {
                     
                      <p>{this.state.book.bookDescription}</p> 
                     
-                    <button className="btn btn-primary" onClick={this.buyHandler}>Buy</button>
+                    <button className="btn btn-primary" onClick={() => this.buyHandler()}>Buy</button>
                     </div>
                 </div>
             </div>    
