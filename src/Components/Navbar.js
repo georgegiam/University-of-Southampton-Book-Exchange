@@ -16,6 +16,7 @@ import MyBooks from '../Components/MyBooks'
 import BookDetails from '../Components/BookDetails'
 import MyNotifications from '../Components/myNotifications'
 import MyPurchases from '../Components/myPurchases'
+import DatePicker from '../Components/datePicker'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
 
@@ -125,6 +126,10 @@ const Nav = (props) => {
             {/* route to Purchase Details password */}
             <Route path="/myPurchases">
                 <MyPurchases/>
+            </Route>
+            {/* route to Purchase Details password */}
+            <Route path="/datePicker">
+                <DatePicker/>
             </Route>
              {/* route to index */}
             <Route path="/">
