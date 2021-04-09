@@ -118,7 +118,7 @@ const Nav = (props) => {
             <div className="container" id="notifications">
                 <div className="container-fluid">
                 <h2>My notifications</h2><hr/>
-                <MyNotifications/>
+                    <MyNotifications/>
                 </div>
             </div>
             </Route>

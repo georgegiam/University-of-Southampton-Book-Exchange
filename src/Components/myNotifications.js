@@ -105,7 +105,7 @@ class MyNotifications extends Component {
                 <a href="#" id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}>Decline</a>&nbsp;
                 <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)}>Mark as Sold</a>
               
-          </div> 
+          </div> <br/>
 
 
             <Modal className="modal fade" show={this.state.isOpen}>
