@@ -49,8 +49,8 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
     .add({
       sellerId: sellerId,
       buyerEmail: buyerEmail,
-      date: "04/04/2021",
-      time: "14:00",
+      date: "Pending",
+      time: "Pending",
       bookName: bookName,
       status: "pending",
       bookId: bookId,
@@ -71,8 +71,12 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
         .doc(docRef.id)
         .update({ ID: docRef.id });
       db.collection("Books").doc(bookId).update({ isAvailable: false });
-      // Send Confirmation email
-      //Email.sendConfirmationEmail();
+
+      db.collection("Users").doc(sellerId).update({newNotfity: firebase.firestore.FieldValue.increment(1)})
+      .catch((error) => {
+        db.collection("Users").doc(sellerId).update({newNotfity: 1});
+      })
+
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -86,7 +90,7 @@ export async function setStatus(sellerId, appointmentID, status, bookId) {
     db.collection("Books").doc(bookId).update({ isAvailable: true });
     db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).delete();
   }
-
+  db.collection("Users").doc(sellerId).update({newNotfity: firebase.firestore.FieldValue.increment(-1)});
 
   db.collection("Users")
     .doc(sellerId)
@@ -102,4 +106,5 @@ export async function setDateandTime(sellerId, appointmentID, date, time, locati
   db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).update({ date: date });
   db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).update({ time: time });
   db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).update({ location: location });
+  db.collection("Users").doc(sellerId).update({newNotfity: firebase.firestore.FieldValue.increment(-1)});
 }

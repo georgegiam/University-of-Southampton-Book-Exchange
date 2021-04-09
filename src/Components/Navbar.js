@@ -19,6 +19,7 @@ import MyPurchases from '../Components/myPurchases'
 import DatePicker from '../Components/datePicker'
 
 import firebase from '../FirebaseUtility/firebaseSetup'; 
+import * as Firebase from "../FirebaseUtility/readFromDatabase";
 
 // react icons
 import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt, FaMoneyBill } from 'react-icons/fa';
@@ -26,16 +27,18 @@ import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt, FaMoneyBill } from 'r
 const Nav = (props) => {
     
     const [isUserLoggedIn, setStatus] = useState(null);
+    const [badge, setNum] = useState(0);
 
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged((user) => {
+    useEffect(async() => {
+        firebase.auth().onAuthStateChanged(async (user) => {
             if (user) {
+                var userInfo = await Firebase.readUsersBadges(user.uid);
                 console.log("NavBar: userlogged in");
                 setStatus(
                     <div className="dropdown">
-                    <button className="btn btn-info btn-sm dropdown-toggle"><span class="badge badge-danger">9</span>&nbsp;{user.email}</button>
+                    <button className="btn btn-info btn-sm dropdown-toggle"><span class="badge badge-danger">{userInfo}</span>&nbsp;{user.email}</button>
                     <div className="dropdown-content">
-                        <Link className="dropdown-item" to="/myNotifications">< FaBell/>&nbsp; Notifications &nbsp;<span class="badge badge-danger">9</span></Link>
+                        <Link className="dropdown-item" to="/myNotifications">< FaBell/>&nbsp; Notifications &nbsp;<span class="badge badge-danger">{userInfo}</span></Link>
                         <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
                         <Link className="dropdown-item" to="/myBooks"><FaBook/>&nbsp; My Books</Link>
                         <Link className="dropdown-item" to="/myPurchases">< FaMoneyBill/>&nbsp; My Purchases</Link>

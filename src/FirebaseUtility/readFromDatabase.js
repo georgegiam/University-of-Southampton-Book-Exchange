@@ -22,6 +22,25 @@ export async function searchBookByTitle(bookName) {
 //     return book.docs.map(doc => doc.data());
 // }
 
+export async function readUsersBadges(userID) {
+    var db = firebase.firestore();
+    var data = 0; 
+    const badges = await db.collection("Users").doc(userID);
+    await badges.get().then((doc) => {
+        if(doc.exists) {
+            console.log('BADGES:', doc.data());
+            data = doc.data().newNotfity;
+        } else {
+                data = 0;
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+        data = 0;
+    });
+
+    return data;
+}
+
 
 export async function readUsersBooks(userID) {
     var db = firebase.firestore();
