@@ -89,9 +89,6 @@ class MyNotifications extends Component {
           showAccpetedButton = false;
         }
         return (
-          <div className="container" id="notifications">
-            <div className="container-fluid">
-              <h2>My notifications</h2><hr/>
             <Aux key={index}>
             <div className="list-group-item list-group-item-warning" key={index}>
             <div className="d-flex w-100 justify-content-between">
@@ -139,8 +136,6 @@ class MyNotifications extends Component {
           </Modal>
           
         </Aux>
-            </div>
-          </div>
           
             );
     });
