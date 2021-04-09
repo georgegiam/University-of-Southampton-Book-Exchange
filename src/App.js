@@ -81,24 +81,28 @@ class App extends Component {
             <div className="container-fluid text-center">
             <img src="images/logo.png" width="130" height="130"/>
             </div>
-          
+
+            
+
           <h2 className="text-center">University of Southampton Book Exchange</h2><br/>
-          <div className="container-fluid text-center w-50">
-          <div className="input-group">
-            <Typeahead
-              id="example"
-              onChange={this.changeHandler}
-              options={this.state.bookAutoComplete}
-              placeholder="Search by book title"
-              selected={this.state.searchQuery}>
-          </Typeahead>
-              <div className="input-group-append">
-              <button className="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
-              <button className="btn btn-outline-primary" type="button" onClick={this.clearHandler}>Clear</button>
-              </div>
-              <div id="match-list"></div>
+
+          <div className="container-fluid">
+            <div class="input-group d-flex justify-content-center">
+              <Typeahead
+                  id="example"
+                  onChange={this.changeHandler}
+                  options={this.state.bookAutoComplete}
+                  placeholder="Search by book title"
+                  selected={this.state.searchQuery}>
+              </Typeahead>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
+                  <button class="btn btn-outline-primary" type="button" onClick={this.clearHandler}>Clear</button>
+                </div>
             </div>
-          </div><br/>
+          </div>
+          
+          <br/>
 
           <h5 className="text-muted">Featured Books</h5>
               
