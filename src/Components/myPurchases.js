@@ -29,8 +29,8 @@ class MyPurchases extends Component {
 
     render () {
 
-        console.log("My purchases: ", this.state.purchases);
-        //console.log("My Exchanges: ", this.state.currentExchange);
+        //console.log("My purchases: ", this.state.purchases);
+        console.log("My Exchanges: ", this.state.currentExchange);
 
     return <div className="container" id="purchases">
         <div className="container-fluid">
@@ -48,6 +48,8 @@ class MyPurchases extends Component {
                         <small>Exchange Date and Time: {this.state.currentExchange[index].date} {this.state.currentExchange[index].time}</small>
                     </div>
                     <small>Exchange Location: {this.state.currentExchange[index].location}</small>
+                    <br></br>
+                    <button className="btn btn-success" disabled={this.state.currentExchange[index].status != "Sold"}>Leave a Review</button>&nbsp;
                 </li>
             );
         } 
