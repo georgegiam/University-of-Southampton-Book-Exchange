@@ -87,7 +87,7 @@ class App extends Component {
           <h2 className="text-center">University of Southampton Book Exchange</h2><br/>
 
           <div className="container-fluid">
-            <div class="input-group d-flex justify-content-center">
+            <div className="input-group d-flex justify-content-center">
               <Typeahead
                   id="example"
                   onChange={this.changeHandler}
@@ -95,9 +95,9 @@ class App extends Component {
                   placeholder="Search by book title"
                   selected={this.state.searchQuery}>
               </Typeahead>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
-                  <button class="btn btn-outline-primary" type="button" onClick={this.clearHandler}>Clear</button>
+                <div className="input-group-append">
+                  <button className="btn btn-outline-primary" type="button" onClick={this.searchHandler}>Search</button>
+                  <button className="btn btn-outline-primary" type="button" onClick={this.clearHandler}>Clear</button>
                 </div>
             </div>
           </div>

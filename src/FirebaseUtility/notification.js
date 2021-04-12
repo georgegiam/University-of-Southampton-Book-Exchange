@@ -57,6 +57,7 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
       bookName: bookName,
       status: "pending",
       bookId: bookId,
+      purchaseDate: firebase.firestore.FieldValue.serverTimestamp(),
       review: {stars: 'pending', reviewText: 'Pending'},
     })
     .then((docRef) => {
@@ -90,7 +91,7 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
 export async function setStatus(sellerId, appointmentID, status, bookId) {
   var db = firebase.firestore();
 
-  if(status === 'declined') {
+  if(status === "declined" || status === "Expired") {
     db.collection("Books").doc(bookId).update({ isAvailable: true });
     db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).delete();
   }

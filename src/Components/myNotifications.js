@@ -33,13 +33,20 @@ class MyNotifications extends Component {
           });
       }
 
-      showModal = (appoint) => {
-        const {history} = this.props; 
-        history.push({
-            pathname: '/datePicker',
-            state: {appointment: appoint,
-            currentUserID: this.state.currentUserID}
-        })
+      showModal = (event, appoint, index) => {
+        var todaysDate = new Date().getTime() / 1000;
+        var expiredDate = appoint.purchaseDate.seconds + 172800;
+        if(expiredDate >= todaysDate) {
+          const {history} = this.props; 
+          history.push({
+              pathname: '/datePicker',
+              state: {appointment: appoint,
+              currentUserID: this.state.currentUserID}
+          })
+        } else {
+          alert("48 hours exipired. The book will be made avaiable again and this notification will be deleted");
+          this.statusHandler(event, "Expired", appoint.bookId, index);
+        }
       }
       
       statusHandler = async (event, status, bookId, index) => {
@@ -70,7 +77,7 @@ class MyNotifications extends Component {
             {empty}   
     {this.state.appointments.map((appoint, index) => {
 
-        if(appoint.status === 'accepted') {
+        if(appoint.status === 'accepted' || appoint.status === 'Expired') {
           showAccpetedButton = false;
         } else{
           showAccpetedButton = true;
@@ -87,7 +94,7 @@ class MyNotifications extends Component {
               <p className="card-text">Date: {appoint.date}  Time: {appoint.time}</p>
               <p className="card-text">Location: {appoint.location}</p>
               <p className="card-text">Rating: {appoint.review.stars} stars  {appoint.review.reviewText}</p>
-              <button id={appoint.ID} className="btn btn-success" onClick={() => this.showModal(appoint)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
+              <button id={appoint.ID} className="btn btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
               <a href="#" id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}>Decline</a>&nbsp;
               <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)}>Mark as Sold</a>
           </div> 
