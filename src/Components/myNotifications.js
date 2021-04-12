@@ -68,7 +68,9 @@ class MyNotifications extends Component {
         console.log("My appointments: ", this.state.appointments);
 
         if(this.state.appointments.length == 0) {
-          empty = <p>No Notifications</p>
+          empty = <div class="alert alert-primary text-center" role="alert">
+          No notifications
+        </div>
       }
 
     return <div className="container" id="notifications">

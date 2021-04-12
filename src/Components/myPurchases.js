@@ -45,7 +45,9 @@ class MyPurchases extends Component {
         console.log("My purchases: ", this.state.purchases);
         console.log("My Exchanges: ", this.state.currentExchange);
         if(this.state.purchases.length == 0) {
-            empty = <p>No Purchases made</p>
+            empty = <div class="alert alert-primary text-center" role="alert">
+            No purchases made
+          </div>
         }
 
     return <div className="container" id="purchases">
