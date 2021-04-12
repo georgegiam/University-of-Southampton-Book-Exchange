@@ -41,6 +41,7 @@ class MyNotifications extends Component {
             currentUserID: this.state.currentUserID}
         })
       }
+      
       statusHandler = async (event, status, bookId, index) => {
           event.preventDefault();
           console.log(this.state);
@@ -76,6 +77,7 @@ class MyNotifications extends Component {
                 
               <p className="card-text">Date: {appoint.date}  Time: {appoint.time}</p>
               <p className="card-text">Location: {appoint.location}</p>
+              <p className="card-text">Rating: {appoint.review.stars} stars  {appoint.review.reviewText}</p>
               <button id={appoint.ID} className="btn btn-success" onClick={() => this.showModal(appoint)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
               <a href="#" id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}>Decline</a>&nbsp;
               <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)}>Mark as Sold</a>

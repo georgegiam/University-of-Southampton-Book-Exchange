@@ -35,7 +35,7 @@ export async function sendBuyerNotification() {
   }
 }
 
-export async function addAppointment(bookId, isAvailable, bookName, bookDescription, bookPrice, buyerId, buyerEmail, sellerId, buyerName) {
+export async function addAppointment(bookId, isAvailable, bookName, bookDescription, bookPrice, buyerId, buyerEmail, sellerId, buyerName, sellerName) {
   var db = firebase.firestore();
 
   if (!isAvailable) {
@@ -48,6 +48,7 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
     .collection("Appointments")
     .add({
       sellerId: sellerId,
+      sellerName: sellerName,
       buyerEmail: buyerEmail,
       buyerName: buyerName,
       date: "Pending",
@@ -56,6 +57,7 @@ export async function addAppointment(bookId, isAvailable, bookName, bookDescript
       bookName: bookName,
       status: "pending",
       bookId: bookId,
+      review: {stars: 'pending', reviewText: 'Pending'},
     })
     .then((docRef) => {
       alert("Confirmation sent to the Seller");
@@ -109,4 +111,11 @@ export async function setDateandTime(sellerId, appointmentID, date, time, locati
   db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).update({ time: time });
   db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).update({ location: location });
   db.collection("Users").doc(sellerId).update({newNotfity: firebase.firestore.FieldValue.increment(-1)});
+}
+
+export async function setReview(sellerId, appointmentID, review) {
+  var db = firebase.firestore();
+
+  await db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).update({ review: review });
+  await db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).update({ status: "Reviewed" });
 }

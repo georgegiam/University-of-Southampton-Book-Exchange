@@ -17,6 +17,7 @@ export function addToCollection(listing) {
           created: firebase.firestore.FieldValue.serverTimestamp(),
           sellerID: listing.userID,
           sellerEmail: listing.userEmail,
+          sellerName: listing.userName,
           isAvailable: true,
         })
         .then((docRef) => {

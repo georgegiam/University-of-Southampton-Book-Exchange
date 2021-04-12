@@ -16,6 +16,7 @@ class CreateListing extends PureComponent {
             imageFile: '',
             userID: '',
             userEmail: '',
+            userName: '',
         };
 
 
@@ -60,6 +61,7 @@ class CreateListing extends PureComponent {
               console.log("uid: " + uid);
               this.setState({userID: uid});
               this.setState({userEmail: user.email});
+              this.setState({userName: user.displayName});
             } else {
                 //alert("Please Login First!");
                 history.push("/login");

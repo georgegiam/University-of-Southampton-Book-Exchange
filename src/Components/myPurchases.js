@@ -1,5 +1,6 @@
 import React, {Component}  from 'react';
 import '../App.css'
+import { withRouter } from 'react-router-dom';
 
 import firebase from "../FirebaseUtility/firebaseSetup";
 import * as Firebase from "../FirebaseUtility/readFromDatabase";
@@ -27,9 +28,19 @@ class MyPurchases extends Component {
           });
       }
 
+    reviewHandler = (exchange, purchase) => {
+        const {history} = this.props; 
+        history.push({
+            pathname: '/review',
+            state: {exchangeDetails: exchange,
+            purchaseDetails: purchase}
+        })
+      }
+      
+
     render () {
 
-        //console.log("My purchases: ", this.state.purchases);
+        console.log("My purchases: ", this.state.purchases);
         console.log("My Exchanges: ", this.state.currentExchange);
 
     return <div className="container" id="purchases">
@@ -49,7 +60,7 @@ class MyPurchases extends Component {
                     </div>
                     <small>Exchange Location: {this.state.currentExchange[index].location}</small>
                     <br></br>
-                    <button className="btn btn-success" disabled={this.state.currentExchange[index].status != "Sold"}>Leave a Review</button>&nbsp;
+                    <button className="btn btn-success" onClick={() => this.reviewHandler(this.state.currentExchange[index], this.state.purchases[index])} disabled={this.state.currentExchange[index].status != "Sold"}>Leave a Review</button>&nbsp;
                 </li>
             );
         } 
@@ -63,4 +74,4 @@ class MyPurchases extends Component {
     }
 }
 
-export default MyPurchases;
+export default withRouter(MyPurchases);
