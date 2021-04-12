@@ -141,3 +141,7 @@ li {
   cursor: pointer;
 }
 
+#review {
+  margin-top: 7%;
+  width: 50%;
+}
