@@ -104,7 +104,7 @@ li {
   background-color: #3e8e41;
 }
 
-#addBook, #register {
+#addBook, #register, #scheduler {
   width: 40%;
   margin-top: 5%;
 }
