@@ -19,7 +19,7 @@ class BookDetails extends PureComponent {
         var user = firebase.auth().currentUser
             if (user) {
                 if(user.uid === this.state.book.sellerID) {
-                    alert('Cant buy your own book!')
+                    alert('You can\'t buy your own book.')
                     return;
                 } 
                 Firebase.addAppointment(this.state.book.ID, this.state.book.isAvailable, this.state.book.bookName, this.state.book.bookDescription, this.state.book.bookPrice, user.uid, user.email ,this.state.book.sellerID, user.displayName, this.state.book.sellerName);
