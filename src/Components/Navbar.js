@@ -120,12 +120,7 @@ const Nav = (props) => {
             </Route>
             {/* route to Notifcations password */}
             <Route path="/myNotifications">
-            <div className="container" id="notifications">
-                <div className="container-fluid">
-                <h2>My notifications</h2><hr/>
-                    <MyNotifications/>
-                </div>
-            </div>
+                <MyNotifications/>
             </Route>
             {/* route to Purchase Details password */}
             <Route path="/myPurchases">

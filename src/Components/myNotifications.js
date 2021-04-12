@@ -57,9 +57,18 @@ class MyNotifications extends Component {
     render () {
 
         var showAccpetedButton = true;
+        var empty = null; 
         console.log("My appointments: ", this.state.appointments);
 
-    return this.state.appointments.map((appoint, index) => {
+        if(this.state.appointments.length == 0) {
+          empty = <p>No Notifications</p>
+      }
+
+    return <div className="container" id="notifications">
+            <div className="container-fluid">
+            <h2>My notifications</h2><hr/> 
+            {empty}   
+    {this.state.appointments.map((appoint, index) => {
 
         if(appoint.status === 'accepted') {
           showAccpetedButton = false;
@@ -84,8 +93,11 @@ class MyNotifications extends Component {
           </div> 
         
             );
-    });
-}
+    })
+  }
+      </div>
+    </div>
+  }
 }
 
 export default withRouter(MyNotifications);

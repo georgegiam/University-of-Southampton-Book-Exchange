@@ -14,7 +14,7 @@ class MyPurchases extends Component {
         };
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               var uid = user.uid;
@@ -40,13 +40,20 @@ class MyPurchases extends Component {
 
     render () {
 
+        var empty = null;
+        
         console.log("My purchases: ", this.state.purchases);
         console.log("My Exchanges: ", this.state.currentExchange);
+        if(this.state.purchases.length == 0) {
+            empty = <p>No Purchases made</p>
+        }
 
     return <div className="container" id="purchases">
         <div className="container-fluid">
             <h2>My purchases</h2><hr/>
-        <ul className="list-group"> {this.state.purchases.map((bookItem, index) => {
+        <ul className="list-group">
+            {empty}
+             {this.state.purchases.map((bookItem, index) => {
         if(this.state.currentExchange.length > 0) {
             return (
                 <li key={index} href="#" className="list-group-item list-group-item-info flex-column align-items-start">
@@ -64,7 +71,6 @@ class MyPurchases extends Component {
                 </li>
             );
         } 
-
         }) 
     } </ul>
         </div>
