@@ -62,8 +62,6 @@ class MyNotifications extends Component {
     }
 
     render () {
-
-        var showAccpetedButton = true;
         var empty = null; 
         console.log("My appointments: ", this.state.appointments);
 
@@ -78,12 +76,25 @@ class MyNotifications extends Component {
             <h2>My notifications</h2><hr/> 
             {empty}   
     {this.state.appointments.map((appoint, index) => {
+        var showAccpetedButton = true;
+        var showSoldButton = false;
+        var showDeclineButton = true;
 
         if(appoint.status === 'accepted' || appoint.status === 'Expired') {
           showAccpetedButton = false;
+          showSoldButton = true;
+          showDeclineButton = false;
         } else{
           showAccpetedButton = true;
         }
+
+        if(appoint.status === 'Sold') {
+          showAccpetedButton = false;
+          showSoldButton = false;
+          showDeclineButton = false;
+        }
+
+
         return (
             <div className="list-group-item list-group-item-warning" key={index}>
               <div className="d-flex w-100 justify-content-between">
@@ -97,8 +108,8 @@ class MyNotifications extends Component {
               <p className="card-text">Location: {appoint.location}</p>
               <p className="card-text">Rating: {appoint.review.stars} stars  {appoint.review.reviewText}</p>
               <button id={appoint.ID} className="btn btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
-              <a href="#" id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}>Decline</a>&nbsp;
-              <a href="#" id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)}>Mark as Sold</a>
+              <button id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}disabled={!showDeclineButton}>Decline</button>&nbsp;
+              <button id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)} disabled={!showSoldButton}>Mark as Sold</button>
           </div> 
         
             );

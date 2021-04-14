@@ -95,8 +95,9 @@ export async function setStatus(sellerId, appointmentID, status, bookId) {
     db.collection("Books").doc(bookId).update({ isAvailable: true });
     db.collection("Users").doc(sellerId).collection("Appointments").doc(appointmentID).delete();
   }
-  db.collection("Users").doc(sellerId).update({newNotfity: firebase.firestore.FieldValue.increment(-1)});
-
+  if(status != "Sold") {
+    db.collection("Users").doc(sellerId).update({newNotfity: firebase.firestore.FieldValue.increment(-1)});
+  }
   db.collection("Users")
     .doc(sellerId)
     .collection("Appointments")

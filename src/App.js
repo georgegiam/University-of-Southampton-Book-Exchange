@@ -31,7 +31,9 @@ class App extends Component {
       const response = await Firebase.readAllCollection("Books", newBooks);
       this.setState({ books: response });
       for(var i = 0; i < response.length; i++) {
-          newAuto.push(response[i].bookName);
+          if(response[i].isAvailable) {
+            newAuto.push(response[i].bookName);
+          }
       }
       this.setState({ bookAutoComplete: newAuto });
     };
