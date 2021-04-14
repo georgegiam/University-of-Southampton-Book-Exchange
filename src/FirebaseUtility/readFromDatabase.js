@@ -60,6 +60,13 @@ export async function readUsersAppointments(userID) {
     return appointments.docs.map(doc => doc.data());
 }
 
+export async function readUsersAppointmentsByStatus(userID, status) {
+    var db = firebase.firestore();
+
+    const snapshop = await db.collection("Users").doc(userID).collection("Appointments").where("status", "==", status).get();
+    return snapshop.docs.map(doc => doc.data());
+}
+
 export async function readUsersPurchases(userID) {
     var db = firebase.firestore();
     var exchanges = [];

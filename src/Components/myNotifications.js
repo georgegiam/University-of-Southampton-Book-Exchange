@@ -61,6 +61,16 @@ class MyNotifications extends Component {
         });
     }
 
+    filterHandler = async (event) => {
+      var response = null;
+      if(event.target.id === "All") {
+        response = await Firebase.readUsersAppointments(this.state.currentUserID);
+      } else {
+        response = await Firebase.readUsersAppointmentsByStatus(this.state.currentUserID, event.target.id);
+      }
+      this.setState({ appointments: response });
+    }
+
     render () {
         var empty = null; 
         console.log("My appointments: ", this.state.appointments);
@@ -74,6 +84,15 @@ class MyNotifications extends Component {
     return <div className="container" id="notifications">
             <div className="container-fluid">
             <h2>My notifications</h2><hr/> 
+            <div class="dropdown">
+              <button class="dropbtn">Filter</button>
+              <div class="dropdown-content">
+                <a id="accepted" href="#" onClick={this.filterHandler}>Accepted</a>
+                <a id="pending" href="#" onClick={this.filterHandler} >Pending</a>
+                <a id="Sold" href="#" onClick={this.filterHandler}>Sold</a>
+                <a id="All" href="#" onClick={this.filterHandler}>All</a>
+              </div>
+            </div>
             {empty}   
     {this.state.appointments.map((appoint, index) => {
         var showAccpetedButton = true;
