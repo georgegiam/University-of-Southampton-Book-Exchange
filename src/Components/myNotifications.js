@@ -83,16 +83,24 @@ class MyNotifications extends Component {
 
     return <div className="container" id="notifications">
             <div className="container-fluid">
-            <h2>My notifications</h2><hr/> 
-            <div class="dropdown">
-              <button class="dropbtn">Filter</button>
-              <div class="dropdown-content">
-                <a id="accepted" href="#" onClick={this.filterHandler}>Accepted</a>
-                <a id="pending" href="#" onClick={this.filterHandler} >Pending</a>
-                <a id="Sold" href="#" onClick={this.filterHandler}>Sold</a>
-                <a id="All" href="#" onClick={this.filterHandler}>All</a>
+              <div className="container-fluid d-flex justify-content-between p-0">
+              <h2>My notifications</h2>
+            
+            <div className="dropdown">
+                    <button className="btn btn-secondary btn-sm dropdown-toggle">Filter by</button>
+                    <div className="dropdown-content">
+                        <a id="accepted" className="dropdown-item" onClick={this.filterHandler}>Accepted</a>
+                        <a id="pending" className="dropdown-item" onClick={this.filterHandler}>Pending</a>
+                        <a id="Sold" className="dropdown-item" onClick={this.filterHandler}>Sold</a>
+                        <a id="All" className="dropdown-item" onClick={this.filterHandler}>All</a>
+                    </div>
+                </div> 
               </div>
-            </div>
+            
+            
+            <hr/> 
+            
+          
             {empty}   
     {this.state.appointments.map((appoint, index) => {
         var showAccpetedButton = true;
