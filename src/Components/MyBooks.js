@@ -1,5 +1,6 @@
 import React, {Component}  from 'react';
 import '../App.css'
+import { withRouter } from 'react-router-dom';
 
 import firebase from "../FirebaseUtility/firebaseSetup";
 import * as Firebase from "../FirebaseUtility/readFromDatabase";
@@ -16,8 +17,6 @@ class MyBooks extends Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
               var uid = user.uid;
               const fetchData = async () => {
                 const response = await Firebase.readUsersBooks(uid);
@@ -26,9 +25,6 @@ class MyBooks extends Component {
                 //console.log("REP: ", response);
               };
               fetchData();
-            } else {
-                //alert("Please Login First!");
-                //history.push("/login");
             }
           });
       }
@@ -43,6 +39,15 @@ class MyBooks extends Component {
         newbooksIds.delete(key);
         this.setState({bookIds: newbooksIds});
         console.log(this.state.bookIds);
+      }
+
+      editHandler = (event, book) => {
+        const {history} = this.props; 
+        history.push({
+            pathname: '/editBook',
+            state: {book: book,
+            currentUserID: this.state.currentUserID}
+          })
       }
     render () {
 
@@ -60,7 +65,7 @@ class MyBooks extends Component {
                                 <h5 className="mt-0 mb-1">{book.bookName}</h5>
                                 <small className="text-muted">Posted: {JSON.stringify(book.created.toDate())}</small><br/>
                                     {book.bookDescription} <br/>
-                                <a href="#">Edit</a> &nbsp;
+                                <a onClick={(e) => this.editHandler(e, book)} className="text">Edit</a> &nbsp;
                                 <a onClick={this.deleteHandler} id={index} className="text-danger">Delete</a>
                             </div>
                         </li><br/>
@@ -72,4 +77,4 @@ class MyBooks extends Component {
 }
 }
 
-export default MyBooks;
+export default withRouter(MyBooks);

@@ -99,3 +99,11 @@ export function deleteBookByID(bookID, userID, imageURL) {
     storage.refFromURL(imageURL).delete();
 }
 
+export function updateBookByID(bookId, bookName, bookPrice, bookDescription) {
+    var db = firebase.firestore();
+
+    db.collection("Books").doc(bookId).update({ bookName: bookName });
+    db.collection("Books").doc(bookId).update({ bookPrice: bookPrice });
+    db.collection("Books").doc(bookId).update({ bookDescription: bookDescription });
+}
+
