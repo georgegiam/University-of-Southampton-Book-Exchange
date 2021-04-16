@@ -1,14 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Calendar from './Components/MyCalendar'
+import Edit from './Components/EditBook'
 
 
 function App() {
   return (
-
-      <Calendar />    
-
-
+      <Edit />    
   );
 }
 
