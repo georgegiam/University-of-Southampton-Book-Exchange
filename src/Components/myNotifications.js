@@ -128,32 +128,58 @@ class MyNotifications extends Component {
 
 
         return (
-          <div className="list-group-item list-group-item-warning" key={index}>
-          <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
-          <div className="container" id="calendar">
-          <div className="container-fluid">
-              <div class="row row-striped">
-                  <div class="col-2 text-center">
-                      <h1 class="display-4"><span class="badge badge-secondary">{day}</span></h1>
-                      <h2>{months[month]}</h2>
-                  </div>
-                  <div class="col-10">
-                      <h3><strong>{appoint.bookName}</strong></h3>
-                      <ul class="list-inline">
-                          <li class="list-inline-item"><FaStopwatch/> {appoint.time}</li>
-                          <li class="list-inline-item"><FaLocationArrow/> {appoint.location}</li>
-                          <li class="list-inline-item"><FaUserAlt/> {appoint.buyerName}</li>
-                          <li class="list-inline-item"><FaMailBulk/> {appoint.buyerEmail}</li>
-                      </ul>
-                  <p className="card-text">Rating: {appoint.review.stars} stars  {appoint.review.reviewText}</p>
-                  <button id={appoint.ID} className="btn btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
-                  <button id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}disabled={!showDeclineButton}>Decline</button>&nbsp;
-                 <button id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)} disabled={!showSoldButton}>Mark as Sold</button>
-                  </div>
+          // calendar card
+          <div class="row row-striped" key={index}>
+            
+              
+              <div class="col-2 text-center">
+                <h1 class="display-4"><span class="badge badge-secondary">{day}</span></h1>
+                <h2>{months[month]}</h2>
+                <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
               </div>
+              <div class="col-10">
+                <h3>{appoint.bookName}</h3>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><FaStopwatch/> {appoint.time}</li>
+                  <li class="list-inline-item"><FaLocationArrow/> {appoint.location}</li>
+                  <li class="list-inline-item"><FaMailBulk/> {appoint.buyerEmail}</li>
+                </ul>
+                <p className="card-text">Stars: {appoint.review.stars}</p>
+                <p className="card-text">Review:  {appoint.review.reviewText}</p>
+                <button id={appoint.ID} className="btn btn-sm btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
+                <button id={appoint.ID} className="btn btn-sm btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}disabled={!showDeclineButton}>Decline</button>&nbsp;
+                <button id={appoint.ID} className="btn btn-sm btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)} disabled={!showSoldButton}>Mark as Sold</button>
+
+                
+            </div>
           </div>
-      </div>
-      </div>
+
+      //     <div className="row row-striped" key={index}>
+      //     <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
+      //     <div className="container" id="calendar">
+      //     <div className="container-fluid">
+      //         <div class="row row-striped">
+      //             <div class="col-2 text-center">
+      //                 <h1 class="display-4"><span class="badge badge-secondary">{day}</span></h1>
+      //                 <h2>{months[month]}</h2>
+      //             </div>
+      //             <div class="col-10">
+      //                 <h3><strong>{appoint.bookName}</strong></h3>
+      //                 <ul class="list-inline">
+      //                     <li class="list-inline-item"><FaStopwatch/> {appoint.time}</li>
+      //                     <li class="list-inline-item"><FaLocationArrow/> {appoint.location}</li>
+      //                     <li class="list-inline-item"><FaUserAlt/> {appoint.buyerName}</li>
+      //                     <li class="list-inline-item"><FaMailBulk/> {appoint.buyerEmail}</li>
+      //                 </ul>
+      //             <p className="card-text">Rating: {appoint.review.stars} stars  {appoint.review.reviewText}</p>
+      //             <button id={appoint.ID} className="btn btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
+      //             <button id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}disabled={!showDeclineButton}>Decline</button>&nbsp;
+      //            <button id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)} disabled={!showSoldButton}>Mark as Sold</button>
+      //             </div>
+      //         </div>
+      //     </div>
+      // </div>
+      // </div>
         
             );
     })

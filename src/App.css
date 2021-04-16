@@ -37,14 +37,6 @@
   }
 }
 
-
-li {
-  display:inline;
-  padding: 5px 20px;
-}
-
-
-
 #login {
   margin-top: 7%;
   width: 25%;
@@ -146,4 +138,14 @@ li {
 #review {
   margin-top: 7%;
   width: 50%;
+}
+
+.row-striped{
+  background-color: #efefef;
+  border-left: 4px #000000 solid;
+}
+
+
+.row-striped {
+    padding: 15px 0;
 }

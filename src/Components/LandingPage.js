@@ -11,6 +11,9 @@ class Landpage extends PureComponent {
 
 
     }
+    componentDidMount(){
+        // TODO: Add here the getBooks and remove props
+    }
 
     moreInfoHandler = (event, data) => {
         //console.log(data);
