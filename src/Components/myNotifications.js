@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import firebase from "../FirebaseUtility/firebaseSetup";
 import * as Firebase from "../FirebaseUtility/readFromDatabase";
 import * as FirebaseNotfi from "../FirebaseUtility/notification";
+import { FaLocationArrow, FaStopwatch, FaCalendar, FaMailBulk, FaUserAlt, FaMoneyBillWave } from 'react-icons/fa';
 
 class MyNotifications extends Component {
     constructor(props) {
@@ -73,6 +74,7 @@ class MyNotifications extends Component {
 
     render () {
         var empty = null; 
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         console.log("My appointments: ", this.state.appointments);
 
         if(this.state.appointments.length == 0) {
@@ -96,8 +98,7 @@ class MyNotifications extends Component {
                     </div>
                 </div> 
               </div>
-            
-            
+    
             <hr/> 
             
           
@@ -115,29 +116,44 @@ class MyNotifications extends Component {
           showAccpetedButton = true;
         }
 
-        if(appoint.status === 'Sold') {
+        if(appoint.status === 'Sold' || appoint.status === 'Reviewed') {
           showAccpetedButton = false;
           showSoldButton = false;
           showDeclineButton = false;
         }
 
+        var calDate = Date.parse(appoint.date)
+        var month = new Date(calDate).getMonth();
+        var day = new Date(calDate).getDay();
+
 
         return (
-            <div className="list-group-item list-group-item-warning" key={index}>
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mt-0">{appoint.bookName}</h5>
-                <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
+          <div className="list-group-item list-group-item-warning" key={index}>
+          <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
+          <div className="container" id="calendar">
+          <div className="container-fluid">
+              <div class="row row-striped">
+                  <div class="col-2 text-center">
+                      <h1 class="display-4"><span class="badge badge-secondary">{day}</span></h1>
+                      <h2>{months[month]}</h2>
+                  </div>
+                  <div class="col-10">
+                      <h3><strong>{appoint.bookName}</strong></h3>
+                      <ul class="list-inline">
+                          <li class="list-inline-item"><FaStopwatch/> {appoint.time}</li>
+                          <li class="list-inline-item"><FaLocationArrow/> {appoint.location}</li>
+                          <li class="list-inline-item"><FaUserAlt/> {appoint.buyerName}</li>
+                          <li class="list-inline-item"><FaMailBulk/> {appoint.buyerEmail}</li>
+                      </ul>
+                  <p className="card-text">Rating: {appoint.review.stars} stars  {appoint.review.reviewText}</p>
+                  <button id={appoint.ID} className="btn btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
+                  <button id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}disabled={!showDeclineButton}>Decline</button>&nbsp;
+                 <button id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)} disabled={!showSoldButton}>Mark as Sold</button>
+                  </div>
               </div>
-                  
-              <h5 className="card-title">Buyer Email: {appoint.buyerEmail} Buyer Name: {appoint.buyerName}</h5>
-                
-              <p className="card-text">Date: {appoint.date}  Time: {appoint.time}</p>
-              <p className="card-text">Location: {appoint.location}</p>
-              <p className="card-text">Rating: {appoint.review.stars} stars  {appoint.review.reviewText}</p>
-              <button id={appoint.ID} className="btn btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
-              <button id={appoint.ID} className="btn btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}disabled={!showDeclineButton}>Decline</button>&nbsp;
-              <button id={appoint.ID} className="btn btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)} disabled={!showSoldButton}>Mark as Sold</button>
-          </div> 
+          </div>
+      </div>
+      </div>
         
             );
     })
