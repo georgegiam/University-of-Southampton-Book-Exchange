@@ -57,6 +57,14 @@ const Nav = (props) => {
 
     }, []);
 
+    function homeHandler() {
+        //alert("Home Pressed");
+        setTimeout(function () {
+            window.location.reload(false);
+        }, 500);
+
+    }
+
     function signOutHandler() {
         firebase.auth().signOut().then(() => {
             // Sign-out successful.
@@ -68,7 +76,7 @@ const Nav = (props) => {
     return (
         <Router>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/" onClick={homeHandler}>
             <img src="images/logo.png" width="30" height="30" className="d-inline-block align-top" alt=""/>
                 University of Southampton Book Exchange</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
