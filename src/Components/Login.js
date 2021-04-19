@@ -25,14 +25,7 @@ const LoginForm = () => {
     }
 
     function googleHandler(type) {
-        var provider = null;
-
-        if(type === "google") {
-            provider = new firebase.auth.GoogleAuthProvider();
-        } else if (type === "facebook") {
-            provider = new firebase.auth.FacebookAuthProvider();
-        }
-
+        var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
