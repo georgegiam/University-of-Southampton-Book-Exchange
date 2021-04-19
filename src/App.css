@@ -158,3 +158,12 @@
 .row-striped {
     padding: 15px 0;
 }
+
+#card-img {
+  transition: .5s ease;
+}
+
+#book-card:hover #card-img {
+  opacity: 0.5;
+}
+

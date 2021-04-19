@@ -65,8 +65,8 @@ class MyBooks extends Component {
                                 <h5 className="mt-0 mb-1">{book.bookName}</h5>
                                 <small className="text-muted">Posted: {JSON.stringify(book.created.toDate())}</small><br/>
                                     {book.bookDescription} <br/>
-                                <a onClick={(e) => this.editHandler(e, book)} className="text">Edit</a> &nbsp;
-                                <a onClick={this.deleteHandler} id={index} className="text-danger">Delete</a>
+                                <a style={{cursor: "pointer"}} onClick={(e) => this.editHandler(e, book)} className="text">Edit</a> &nbsp;
+                                <a style={{cursor: "pointer"}} onClick={this.deleteHandler} id={index} className="text-danger">Delete</a>
                             </div>
                         </li><br/>
                     </ul>
