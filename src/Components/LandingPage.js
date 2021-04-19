@@ -31,8 +31,8 @@ class Landpage extends PureComponent {
         return <div className="w-100" style={{flexWrap: "wrap", display: "flex", justifyContent: "center"}}> {this.props.books.map((book, index) => {
             if(book.isAvailable) {
                 return (
-                    <a style={{cursor: "pointer"}} onClick={((e) => this.moreInfoHandler(e, book))} value={book}>
-                        <div key={index} className="card shadow bg-white rounded" id="book-card">
+                    <a key={index} style={{cursor: "pointer"}} onClick={((e) => this.moreInfoHandler(e, book))} value={book}>
+                        <div className="card shadow bg-white rounded" id="book-card">
                             <img id="card-img" className="card-img-top" src={book.bookImageUrl} alt="Card image cap" />
                             <div className="card-body">
                                 <b><h5 className="card-title">{book.bookName}</h5></b>                

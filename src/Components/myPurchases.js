@@ -11,6 +11,7 @@ class MyPurchases extends Component {
         this.state = {
             purchases: [],
             currentExchange: [],
+            currentUserID: "",
         };
     }
 
@@ -22,6 +23,7 @@ class MyPurchases extends Component {
                 const response = await Firebase.readUsersPurchases(uid);
                 this.setState({ purchases: response[0] });
                 this.setState({ currentExchange: response[1] });
+                this.setState({ currentUserID: uid})
               };
               fetchData();
             }
@@ -36,6 +38,31 @@ class MyPurchases extends Component {
             purchaseDetails: purchase}
         })
       }
+
+      filterHandler = async (event) => {
+        var response = null;
+        var matchedPurchases = [];
+        if(event.target.id === "All") {
+          response = await Firebase.readUsersPurchases(this.state.currentUserID);
+          this.setState({ purchases: response[0] });
+          this.setState({ currentExchange: response[1] });
+        } else {
+          response = await Firebase.readUsersPurchasesByStatus(this.state.currentUserID, event.target.id);
+          var purchase = response[0];
+          var exchange = response[1];
+          for(var i = 0; i < purchase.length; i++) {
+              var id = purchase[i].tracking;
+              let obj = exchange.find(o => o.ID === id);
+              if(obj) {
+                  matchedPurchases.push(purchase[i]);
+              }
+  
+          }
+          this.setState({ purchases: matchedPurchases });
+          this.setState({ currentExchange: response[1] });
+        }
+
+      }
       
 
     render () {
@@ -45,18 +72,31 @@ class MyPurchases extends Component {
         console.log("My purchases: ", this.state.purchases);
         console.log("My Exchanges: ", this.state.currentExchange);
         if(this.state.purchases.length == 0) {
-            empty = <div class="alert alert-primary text-center" role="alert">
+            empty = <div className="alert alert-primary text-center" role="alert">
             No purchases made
           </div>
         }
 
     return <div className="container" id="purchases">
         <div className="container-fluid">
+        <div className="container-fluid d-flex justify-content-between p-0">
             <h2>My purchases</h2><hr/>
+            <div className="dropdown">
+                    <button className="btn btn-secondary btn-sm dropdown-toggle">Filter by</button>
+                    <div className="dropdown-content">
+                        <a id="accepted" className="dropdown-item" onClick={this.filterHandler}>Accepted</a>
+                        <a id="pending" className="dropdown-item" onClick={this.filterHandler}>Pending</a>
+                        <a id="Sold" className="dropdown-item" onClick={this.filterHandler}>Sold</a>
+                        <a id="All" className="dropdown-item" onClick={this.filterHandler}>All</a>
+                    </div>
+                </div> 
+              </div>
+            
+            
         <ul className="list-group">
             {empty}
              {this.state.purchases.map((bookItem, index) => {
-        if(this.state.currentExchange.length > 0) {
+        if(this.state.currentExchange.length > 0 && this.state.purchases.length === this.state.currentExchange.length) {
             return (
                 <li key={index} href="#" className="list-group-item list-group-item-info flex-column align-items-start">
                     <div className="d-flex w-100 justify-content-between">

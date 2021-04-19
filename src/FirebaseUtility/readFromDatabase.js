@@ -67,6 +67,32 @@ export async function readUsersAppointmentsByStatus(userID, status) {
     return snapshop.docs.map(doc => doc.data());
 }
 
+export async function readUsersPurchasesByStatus(userID, status) {
+    var db = firebase.firestore();
+    var exchanges = [];
+    var purchase = [];
+    const purchases = await db.collection("Users").doc(userID).collection("Purchases").get();
+    for(var i = 0; i < purchases.docs.length; i++) {
+        var item = purchases.docs[i].data();
+        var exchange = await getStatusByStatus(item.sellerId, item.tracking, status);
+        console.log('STATUS: ', exchange);
+        if(exchange != null) {
+            exchanges.push(exchange);
+        }
+    }
+    return [purchases.docs.map(doc => doc.data()), exchanges];
+}
+
+export async function getStatusByStatus(sellerId, trackingNumber, status) {
+    var db = firebase.firestore();
+    const exchange = await db.collection("Users").doc(sellerId).collection("Appointments").doc(trackingNumber).get();
+    const data = exchange.data();
+    if(data && data.status === status) {
+        return exchange.data();
+    }
+    return null;
+}
+
 export async function readUsersPurchases(userID) {
     var db = firebase.firestore();
     var exchanges = [];

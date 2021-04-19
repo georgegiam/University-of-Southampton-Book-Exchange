@@ -78,7 +78,7 @@ class MyNotifications extends Component {
         console.log("My appointments: ", this.state.appointments);
 
         if(this.state.appointments.length == 0) {
-          empty = <div class="alert alert-primary text-center" role="alert">
+          empty = <div className="alert alert-primary text-center" role="alert">
           No notifications
         </div>
       }
@@ -125,24 +125,27 @@ class MyNotifications extends Component {
         var calDate = Date.parse(appoint.date)
         var month = new Date(calDate).getMonth();
         var day = new Date(calDate).getDay();
+        if(isNaN(day)) {
+          day = "N/A";
+        }
 
 
         return (
           // calendar card
-          <div class="row row-striped" key={index}>
+          <div className="row row-striped" key={index}>
             
               
-              <div class="col-2 text-center">
-                <h1 class="display-4"><span class="badge badge-secondary">{day}</span></h1>
+              <div className="col-2 text-center">
+                <h1 className="display-4"><span className="badge badge-secondary">{day}</span></h1>
                 <h2>{months[month]}</h2>
                 <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
               </div>
-              <div class="col-10">
+              <div className="col-10">
                 <h3>{appoint.bookName}</h3>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><FaStopwatch/> {appoint.time}</li>
-                  <li class="list-inline-item"><FaLocationArrow/> {appoint.location}</li>
-                  <li class="list-inline-item"><FaMailBulk/> {appoint.buyerEmail}</li>
+                <ul className="list-inline">
+                    <li className="list-inline-item"><FaStopwatch/> {appoint.time}</li>
+                  <li className="list-inline-item"><FaLocationArrow/> {appoint.location}</li>
+                  <li className="list-inline-item"><FaMailBulk/> {appoint.buyerEmail}</li>
                 </ul>
                 <p className="card-text">Stars: {appoint.review.stars}</p>
                 <p className="card-text">Review:  {appoint.review.reviewText}</p>
