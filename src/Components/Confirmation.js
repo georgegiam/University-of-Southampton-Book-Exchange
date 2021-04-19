@@ -14,17 +14,16 @@ const Confirmation = () => {
             var pass = window.localStorage.getItem('passForSignIn');
             var firstName = window.localStorage.getItem('firstNameForSignIn');
             var lastName = window.localStorage.getItem('lastNameForSignIn');
-            // TODO: if the above is empty that means they are opening it from another device - re-ask them again
     
             firebase.auth().createUserWithEmailAndPassword(email, pass)
                 .then(function(user) {
-                    // User is signed in here
-                    //history.push("/");
                     user.user.updateProfile({
                         displayName: firstName + " " + lastName
                       });
                     window.localStorage.removeItem('emailForSignIn');
                     window.localStorage.removeItem('passForSignIn');
+                    window.localStorage.removeItem('firstNameForSignIn');
+                    window.localStorage.removeItem('lastNameForSignIn');
                 })
                 .catch((error) => {
                     var errorMessage = error.message;
