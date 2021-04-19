@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Landpage from "./Components/LandingPage";
 import Nav from "./Components/Navbar";
 
+
 import * as Firebase from "./FirebaseUtility/readFromDatabase";
 import { Typeahead } from 'react-bootstrap-typeahead';
 // import Autocomplete from "./Autocomplete";
@@ -112,7 +113,9 @@ class App extends Component {
             <Landpage 
                 books={this.state.books}>
             </Landpage>
+         
         </div>
+        
       );
     }
 
