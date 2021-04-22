@@ -44,7 +44,7 @@ const Nav = (props) => {
                         <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
                         <Link className="dropdown-item" to="/myBooks"><FaBook/>&nbsp; My Books</Link>
                         <Link className="dropdown-item" to="/myPurchases">< FaMoneyBill/>&nbsp; My Purchases</Link>
-                        <a className="dropdown-item text-danger" onClick={signOutHandler} href="http://localhost:3000/login"><FaSignOutAlt/>&nbsp; Signout</a>
+                        <a className="dropdown-item text-danger" onClick={signOutHandler} href="https://southampton-book-exchange.web.app/login"><FaSignOutAlt/>&nbsp; Signout</a>
                     </div>
                 </div> 
                 );

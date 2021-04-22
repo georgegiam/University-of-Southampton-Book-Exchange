@@ -58,7 +58,7 @@ class RegisterForm extends React.Component{
             var actionCodeSettings = {
                 // URL you want to redirect back to. The domain (www.example.com) for this
                 // URL must be in the authorized domains list in the Firebase Console.
-                url: 'http://localhost:3000/confirmation',
+                url: 'https://southampton-book-exchange.web.app/confirmation',
                 // This must be true.
                 handleCodeInApp: true
               };
@@ -122,7 +122,7 @@ class RegisterForm extends React.Component{
                 <button type="submit" className="btn btn-primary w-100">Register</button>
                 </form> <br />
                 
-                <small className="d-flex justify-content-center">Already have an account? <a href="http://localhost:3000/login">Login</a></small>
+                <small className="d-flex justify-content-center">Already have an account? <a href="https://southampton-book-exchange.web.app/login">Login</a></small>
                 </div>  
             </div>    
         )

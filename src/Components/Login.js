@@ -74,7 +74,7 @@ const LoginForm = () => {
 
             <div className="container-fluid text-center">
                 {/* does nothing yet */}
-                <a href="http://localhost:3000/forgot"><small>I forgot my password</small></a><br/><br/>
+                <a href="https://southampton-book-exchange.web.app/forgot"><small>I forgot my password</small></a><br/><br/>
 
                 <small>Sign in with:</small><br/>
 

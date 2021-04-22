@@ -44,7 +44,7 @@ const Confirmation = () => {
             <p className="lead">You can now login and sell your own books!</p>
             <hr/>
             <p className="lead">
-                <a className="btn btn-primary btn-sm" href="http://localhost:3000/" role="button">Continue to homepage</a>
+                <a className="btn btn-primary btn-sm" href="https://southampton-book-exchange.web.app/" role="button">Continue to homepage</a>
             </p>
             </div>
         </div>
