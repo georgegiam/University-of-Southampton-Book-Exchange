@@ -132,15 +132,17 @@ class MyNotifications extends Component {
 
         return (
           // calendar card
-          <div className="row row-striped" key={index}>
+          <div className="row row-striped" id="app-date" key={index}>
             
               
-              <div className="col-2 text-center">
+              <div className="col-2 text-center" >
                 <h1 className="display-4"><span className="badge badge-secondary">{day}</span></h1>
                 <h2>{months[month]}</h2>
                 <p className="card-text"><span className="badge badge-info">{appoint.status}</span> </p>
               </div>
-              <div className="col-10">
+
+              {/* notification info in desktop view */}
+              <div className="col-10" id="desktop-data">
                 <h3>{appoint.bookName}</h3>
                 <ul className="list-inline">
                     <li className="list-inline-item"><FaStopwatch/> {appoint.time}</li>
@@ -152,10 +154,11 @@ class MyNotifications extends Component {
                 <button id={appoint.ID} className="btn btn-sm btn-success" onClick={(e) => this.showModal(e, appoint, index)} disabled={!showAccpetedButton}>Accept</button>&nbsp;
                 <button id={appoint.ID} className="btn btn-sm btn-danger" onClick={(e) => this.statusHandler(e, "declined", appoint.bookId, index)}disabled={!showDeclineButton}>Decline</button>&nbsp;
                 <button id={appoint.ID} className="btn btn-sm btn-primary" onClick={(e) => this.statusHandler(e, "Sold", appoint.bookId, index)} disabled={!showSoldButton}>Mark as Sold</button>
-
-                
-            </div>
+            </div>            
           </div>
+
+
+
         
             );
     })

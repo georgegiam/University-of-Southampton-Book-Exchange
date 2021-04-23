@@ -24,7 +24,7 @@ import firebase from '../FirebaseUtility/firebaseSetup';
 import * as Firebase from "../FirebaseUtility/readFromDatabase";
 
 // react icons
-import { FaBook, FaCalendar, FaPlus, FaBell, FaSignOutAlt, FaMoneyBill } from 'react-icons/fa';
+import { FaBook, FaListUl, FaPlus, FaBell, FaSignOutAlt, FaMoneyBill } from 'react-icons/fa';
 
 const Nav = (props) => {
     
@@ -81,17 +81,13 @@ const Nav = (props) => {
             <img src="images/logo.png" width="30" height="30" className="d-inline-block align-top" alt=""/>
                 University of Southampton Book Exchange</Link>
 
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div className="dropdown">
-                    <span className="navbar-toggler-icon"></span>
-                    <div className="dropdown-content">
-                        <a id="accepted" className="dropdown-item">Accepted</a>
-                        <a id="pending" className="dropdown-item" >Pending</a>
-                        <a id="Sold" className="dropdown-item" >Sold</a>
-                        <a id="All" className="dropdown-item" >All</a>
-                    </div>
-                </div> 
-            </button>
+            <Link id="nav_mobile" className="navbar-brand" to="/" onClick={homeHandler}>
+            <img src="images/logo.png" width="30" height="30" className="d-inline-block align-top" alt=""/>
+                Southampton Book Exchange</Link>
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
             
 

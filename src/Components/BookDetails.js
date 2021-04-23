@@ -39,22 +39,23 @@ class BookDetails extends PureComponent {
     return (
             <div className="container" id="book-details">           
                 <div className="row">
-                    <div className="col text-center">                 
-                        <img className="card-img-top" src={this.state.book.bookImageUrl} id="book-image" />        
+                    <div className="col-sm text-center">                 
+                            <img className="card-img-top" src={this.state.book.bookImageUrl} id="book-image" />        
                     </div>
-                    <div className="col">
-                    <h3>{this.state.book.bookName}</h3>
-                    <h6 className="card-subtitle mb-2 text-muted">{this.state.book.bookCategory}</h6>
-                    <h5 className="card-subtitle mb-2 text-muted">£{this.state.book.bookPrice}</h5>               
+                    
+                    <div className="col-sm"><br/>
+                        <h3>{this.state.book.bookName}</h3>
+                        <h6 className="card-subtitle mb-2 text-muted">{this.state.book.bookCategory}</h6>
+                        <h5 className="card-subtitle mb-2 text-muted">£{this.state.book.bookPrice}</h5>               
                                 
-                    <hr />
+                        <hr />
                     
-                     <p>{this.state.book.bookDescription}</p> 
+                        <p>{this.state.book.bookDescription}</p> 
                     
-                    <button className="btn btn-primary" onClick={() => this.buyHandler()}>Buy</button>
+                        <button className="btn btn-primary" onClick={() => this.buyHandler()}>Buy</button>
                     </div>
                 </div>
-            </div>    
+            </div>   
         )
     }
 }

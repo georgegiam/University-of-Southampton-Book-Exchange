@@ -168,12 +168,25 @@
   opacity: 0.5;
 }
 
+#nav_mobile {
+  visibility: hidden;
+}
+
+/* mobile view */
 @media only screen and (max-width: 600px) {
-  #myBooks, #notifications, #addBook, #purchases, #login, #review, #scheduler, #edit, #landing {
+  #myBooks, #notifications, #addBook, #purchases, #login, #review, #scheduler, #edit, #landing, #register {
     width: 100%;
   }
 
-  #nav_header {
+  #nav_header{
     visibility: hidden;
+  }
+
+  #app-date {
+    width: 150%;
+  }
+
+  #nav_mobile {
+    visibility: visible;
   }
 }

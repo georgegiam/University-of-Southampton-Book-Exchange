@@ -28,7 +28,7 @@ const forgotPass = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">             
                         <input type="email" className="form-control" id="inputAddress" name="email" onChange={emailHandler} placeholder="Email" required />
-                        <small className="form-text text-muted font-italic">Please enter your University email (username@soton.ac.uk) address</small>
+                        <small className="form-text text-muted font-italic">Please enter your University email address</small>
                     </div> 
                     <button type="submit" className="btn btn-primary w-100">Send Email</button>
                 </form>
