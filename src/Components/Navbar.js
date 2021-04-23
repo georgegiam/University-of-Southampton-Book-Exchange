@@ -38,7 +38,7 @@ const Nav = (props) => {
                 console.log("NavBar: userlogged in");
                 setStatus(
                     <div className="dropdown">
-                    <button className="btn btn-info btn-sm dropdown-toggle"><span className="badge badge-danger">{userInfo}</span>&nbsp;{user.email}</button>
+                        <button className="btn btn-info btn-sm dropdown-toggle"><span className="badge badge-danger">{userInfo}</span>&nbsp;{user.email}</button>
                     <div className="dropdown-content">
                         <Link className="dropdown-item" to="/myNotifications">< FaBell/>&nbsp; Notifications &nbsp;<span className="badge badge-danger">{userInfo}</span></Link>
                         <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
@@ -77,12 +77,23 @@ const Nav = (props) => {
     return (
         <Router>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to="/" onClick={homeHandler}>
+            <Link id="nav_header" className="navbar-brand" to="/" onClick={homeHandler}>
             <img src="images/logo.png" width="30" height="30" className="d-inline-block align-top" alt=""/>
                 University of Southampton Book Exchange</Link>
+
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
+            <div className="dropdown">
+                    <span className="navbar-toggler-icon"></span>
+                    <div className="dropdown-content">
+                        <a id="accepted" className="dropdown-item">Accepted</a>
+                        <a id="pending" className="dropdown-item" >Pending</a>
+                        <a id="Sold" className="dropdown-item" >Sold</a>
+                        <a id="All" className="dropdown-item" >All</a>
+                    </div>
+                </div> 
             </button>
+
+            
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">               

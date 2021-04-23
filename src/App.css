@@ -110,6 +110,7 @@
 #myBooks, #purchases, #notifications {
   margin-top: 5%;
   width: 50%;
+
 }
 
 #book-image {
@@ -167,3 +168,12 @@
   opacity: 0.5;
 }
 
+@media only screen and (max-width: 600px) {
+  #myBooks, #notifications, #addBook, #purchases, #login, #review, #scheduler, #edit, #landing {
+    width: 100%;
+  }
+
+  #nav_header {
+    visibility: hidden;
+  }
+}

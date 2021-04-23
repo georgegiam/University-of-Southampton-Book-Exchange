@@ -80,7 +80,7 @@ class App extends Component {
     if (this.state.books) {
       cardBooks = (
 
-          <div className="container w-50" id="landing">
+          <div className="container" id="landing">
             <div className="container-fluid text-center">
             <img src="images/logo.png" width="130" height="130"/>
             </div>

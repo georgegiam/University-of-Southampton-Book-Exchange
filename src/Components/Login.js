@@ -57,6 +57,7 @@ const LoginForm = () => {
 
     return (
         <div className="container" id="login">   
+            <div className="container-fluid">
             <h3>Login to your account</h3><hr />
             <form onSubmit={submitHandler}>           
             {/* Email */}
@@ -84,6 +85,8 @@ const LoginForm = () => {
             </div><br/>
             
             <small className="d-flex justify-content-center">Not a member yet?&nbsp;<a href="#" onClick={registerHandler}>Create an account</a></small>  
+            </div>
+            
         </div>    
     )
 }
