@@ -80,7 +80,7 @@ class MyPurchases extends Component {
     return <div className="container" id="purchases">
         <div className="container-fluid">
         <div className="container-fluid d-flex justify-content-between p-0">
-            <h2>My purchases</h2><hr/>
+            <h2>My purchases</h2>
             <div className="dropdown">
                     <button className="btn btn-secondary btn-sm dropdown-toggle">Filter by</button>
                     <div className="dropdown-content">
@@ -91,7 +91,7 @@ class MyPurchases extends Component {
                     </div>
                 </div> 
               </div>
-            
+              <hr/>
             
         <ul className="list-group">
             {empty}

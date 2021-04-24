@@ -168,9 +168,7 @@
   opacity: 0.5;
 }
 
-#nav_mobile {
-  visibility: hidden;
-}
+
 
 /* mobile view */
 @media only screen and (max-width: 600px) {
@@ -178,15 +176,12 @@
     width: 100%;
   }
 
-  #nav_header{
-    visibility: hidden;
-  }
-
   #app-date {
     width: 150%;
   }
 
-  #nav_mobile {
-    visibility: visible;
+  #mybook-image {
+    width: 20%;
   }
+ 
 }

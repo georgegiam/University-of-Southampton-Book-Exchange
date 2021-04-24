@@ -205,7 +205,7 @@ class CreateListing extends PureComponent {
                             </div>
                         </div>
                         <button type="submit" className="btn btn-primary w-100">Post</button>
-                        </form>
+                        </form><br/>
                 </div>
             </div>
             
