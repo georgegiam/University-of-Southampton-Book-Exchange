@@ -24,7 +24,7 @@ import firebase from '../FirebaseUtility/firebaseSetup';
 import * as Firebase from "../FirebaseUtility/readFromDatabase";
 
 // react icons
-import { FaBook, FaListUl, FaPlus, FaBell, FaSignOutAlt, FaMoneyBill } from 'react-icons/fa';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const Nav = (props) => {
     
@@ -37,21 +37,38 @@ const Nav = (props) => {
                 var userInfo = await Firebase.readUsersBadges(user.uid);
                 console.log("NavBar: userlogged in");
                 setStatus(
-                    <div className="dropdown">
-                        <button className="btn btn-info btn-sm dropdown-toggle"><span className="badge badge-danger">{userInfo}</span>&nbsp;{user.email}</button>
-                    <div className="dropdown-content">
-                        <Link className="dropdown-item" to="/myNotifications">< FaBell/>&nbsp; Notifications &nbsp;<span className="badge badge-danger">{userInfo}</span></Link>
-                        <Link className="dropdown-item" to="/addbook"><FaPlus/>&nbsp; Add Book</Link>
-                        <Link className="dropdown-item" to="/myBooks"><FaBook/>&nbsp; My Books</Link>
-                        <Link className="dropdown-item" to="/myPurchases">< FaMoneyBill/>&nbsp; My Purchases</Link>
-                        <a className="dropdown-item text-danger" onClick={signOutHandler} href="https://southampton-book-exchange.web.app/login"><FaSignOutAlt/>&nbsp; Signout</a>
+                    <div className="navbar-collapse">
+                        <ul className="navbar-nav mr-auto"> 
+                            <li class="nav-item">
+                                <Link className="nav-link" to="/myNotifications">Notifications &nbsp;<span className="badge badge-danger">{userInfo}</span></Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link className="nav-link" to="/addbook">Add Book</Link>
+                            </li>    
+                            <li class="nav-item">
+                                <Link className="nav-link" to="/myBooks">My Books</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link className="nav-link" to="/myPurchases">My Purchases</Link>
+                            </li>
+                        </ul>
+
+                        <div className="dropdown float-right">
+                            <button className="btn btn-info btn-sm dropdown-toggle">{user.email}</button>
+                                <div className="dropdown-content">
+                                <a className="dropdown-item text-danger" onClick={signOutHandler} href="https://southampton-book-exchange.web.app/login"><FaSignOutAlt/>&nbsp; Signout</a>
+                            </div>
+                        </div> 
+                        
                     </div>
-                </div> 
                 );
             } else {
                 console.log("NavBar: userlogged NOT in");
                 setStatus(
-                    <Link to="/login" href="#" className="btn btn-outline-primary btn-sm">Login/Signup</Link>
+                    // <Link to="/login" href="#" className="btn btn-outline-primary btn-sm float-right">Login/Signup</Link>
+                    <div className="float-right w-100">
+                        <Link to="/login" href="#" className="btn btn-outline-primary btn-sm float-right">Login/Signup</Link>
+                    </div>
                 );
             }
           });
@@ -77,11 +94,7 @@ const Nav = (props) => {
     return (
         <Router>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link id="nav_header" className="navbar-brand" to="/" onClick={homeHandler}>
-            <img src="images/logo.png" width="30" height="30" className="d-inline-block align-top" alt=""/>
-                University of Southampton Book Exchange</Link>
-
-            <Link id="nav_mobile" className="navbar-brand" to="/" onClick={homeHandler}>
+            <Link className="navbar-brand" to="/" onClick={homeHandler}>
             <img src="images/logo.png" width="30" height="30" className="d-inline-block align-top" alt=""/>
                 Southampton Book Exchange</Link>
                 
@@ -91,10 +104,7 @@ const Nav = (props) => {
 
             
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">               
-                    {/* any other link goes here */}
-                </ul>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">                
                 {isUserLoggedIn}
             </div>
         </nav>
@@ -122,10 +132,8 @@ const Nav = (props) => {
             {/* route to my Books password */}
             <Route path="/myBooks">
                 <div className="container" id="myBooks">
-                  
-                        <h2>My Books</h2> <hr/>
-                        <MyBooks/>
-           
+                    <h2>My Books</h2> <hr/>
+                    <MyBooks/>
                 </div>
                 
             </Route>
