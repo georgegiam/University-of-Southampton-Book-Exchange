@@ -1,5 +1,7 @@
 # University of Southampton Book Exchange
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+
 This project aims to build a React application that allows Southampton students to buy and sell books. The application will allow sellers to advertise book they wish to sell, and buyers can browse the available book and request to buy it. The application host all the relevant details regarding the book, such as name, price and category buyer/seller information and the exchange detail. The platform does not deal with payments. However, the exchange appointment is managed by the application. 
 
 ## Implemented features
