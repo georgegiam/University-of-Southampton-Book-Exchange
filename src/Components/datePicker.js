@@ -46,16 +46,14 @@ class DatePicker extends Component {
             <div className="form-group">
               <input type="date" className="form-control" onChange={this.dateHandler} required />
             </div>
-
             <div className="form-group">
               <input type="time" className="form-control"onChange={this.timeHandler} required/>
             </div>
-
             <div className="form-group">
               <input type="text" className="form-control" onChange={this.locationHandler} placeholder="Appointment Location" required/>
             </div>
             <button type="submit" className="btn btn-primary">Save</button>
-            </form>
+          </form>
         </div>
       </div>
 
