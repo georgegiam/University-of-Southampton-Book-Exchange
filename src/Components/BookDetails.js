@@ -25,7 +25,7 @@ class BookDetails extends PureComponent {
                 Firebase.addAppointment(this.state.book.ID, this.state.book.isAvailable, this.state.book.bookName, this.state.book.bookDescription, this.state.book.bookPrice, user.uid, user.email ,this.state.book.sellerID, user.displayName, this.state.book.sellerName);
                 var latestBook = this.state.book;
                 latestBook.isAvailable = false;
-                this.setState({book: latestBook}); // TODO: What happens when they referesh, we might be better fetching the book here again to get the latest value?
+                this.setState({book: latestBook});
             } else {
                 alert("Please Login First");
                 history.push("/login");

@@ -1,9 +1,12 @@
 import firebase from "./firebaseSetup";
 
+// CODE Resource used:  https://firebase.google.com/docs/firestore/quickstart
+
 export function addToCollection(listing) {
   var db = firebase.firestore();
   alert("Adding to Firebase now...");
 
+  // CODE Resource for Promoise used: https://www.pluralsight.com/guides/executing-promises-in-a-react-component
   imageUrl(listing.imageFile)
     .then((imageUrl) => {
       db.collection("Books")
@@ -41,6 +44,7 @@ export function addToCollection(listing) {
     });
 }
 
+// Code resource used for adding image: https://firebase.google.com/docs/storage/android/upload-files
 const imageUrl = (image) => {
   return new Promise((resolve, reject) => {
     var storage = firebase.storage();

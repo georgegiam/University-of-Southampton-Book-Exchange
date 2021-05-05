@@ -39,6 +39,7 @@ class MyNotifications extends Component {
         var expiredDate = appoint.purchaseDate.seconds + 172800;
         if(expiredDate >= todaysDate) {
           const {history} = this.props; 
+          // Code resource used for react router history: https://reactrouter.com/web/api/history
           history.push({
               pathname: '/datePicker',
               state: {appointment: appoint,

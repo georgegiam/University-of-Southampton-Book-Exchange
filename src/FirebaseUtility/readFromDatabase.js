@@ -1,5 +1,6 @@
 import firebase from "./firebaseSetup";
 
+// Resource used: https://firebase.google.com/docs/firestore/quickstart and https://firebase.google.com/docs/storage/web/delete-files
 
 export async function readAllCollection(collectionName, books) {
     var db = firebase.firestore();
@@ -14,13 +15,6 @@ export async function searchBookByTitle(bookName) {
     const snapshop = await db.collection("Books").where("bookName", "==", bookName).get()
     return snapshop.docs.map(doc => doc.data());
 }
-
-// export async function readBookByID(bookID) {
-//     var db = firebase.firestore();
-
-//     const book = await db.collection("Books").doc(bookID).get();
-//     return book.docs.map(doc => doc.data());
-// }
 
 export async function readUsersBadges(userID) {
     var db = firebase.firestore();

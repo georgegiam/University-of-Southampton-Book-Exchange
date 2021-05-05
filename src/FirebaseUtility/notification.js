@@ -2,6 +2,7 @@ import firebase from "./firebaseSetup";
 
 
 export async function sendBuyerNotification() {
+  // Resource used: https://firebase.google.com/docs/cloud-messaging/android/first-message
   try {
     const messaging = firebase.messaging();
     await messaging.requestPermission();

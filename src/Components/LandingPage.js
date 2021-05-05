@@ -11,12 +11,8 @@ class Landpage extends PureComponent {
 
 
     }
-    componentDidMount(){
-        // TODO: Add here the getBooks and remove props
-    }
 
     moreInfoHandler = (event, data) => {
-        //console.log(data);
         const {history} = this.props; 
         history.push({
             pathname: '/details',
@@ -25,9 +21,9 @@ class Landpage extends PureComponent {
     }
 
     
-
     render() {
 
+        // Code resource used for flex: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
         return <div className="w-100" style={{flexWrap: "wrap", display: "flex", justifyContent: "center"}}> {this.props.books.map((book, index) => {
             if(book.isAvailable) {
                 return (
@@ -46,9 +42,6 @@ class Landpage extends PureComponent {
         } </div>
     }
 
-
-
-    
 }
 
 export default withRouter(Landpage);

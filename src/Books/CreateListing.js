@@ -54,7 +54,7 @@ class CreateListing extends PureComponent {
     }
 
     render () {
-        const {history} = this.props; // TODO: This needs to improved as were making multiple render calls here
+        const {history} = this.props;
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
               var uid = user.uid;
@@ -63,7 +63,6 @@ class CreateListing extends PureComponent {
               this.setState({userEmail: user.email});
               this.setState({userName: user.displayName});
             } else {
-                //alert("Please Login First!");
                 history.push("/login");
             }
           });

@@ -54,10 +54,8 @@ class RegisterForm extends React.Component{
         }
         else {
             const {history} = this.props;
-            // add user to firebase
+            // Code resource used: https://firebase.google.com/docs/auth/web/email-link-auth
             var actionCodeSettings = {
-                // URL you want to redirect back to. The domain (www.example.com) for this
-                // URL must be in the authorized domains list in the Firebase Console.
                 url: 'https://southampton-book-exchange.web.app/confirmation',
                 // This must be true.
                 handleCodeInApp: true

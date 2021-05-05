@@ -25,6 +25,7 @@ const LoginForm = () => {
     }
 
     function googleHandler(type) {
+        // Code resource used: https://firebase.google.com/docs/auth/web/google-signin
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
             .signInWithPopup(provider)
@@ -43,6 +44,7 @@ const LoginForm = () => {
     
     function submitHandler(event) {
         event.preventDefault();
+        // Code resource used: https://firebase.google.com/docs/auth/web/start
         firebase.auth().signInWithEmailAndPassword(email, pass)
                 .then((userCredential) => {
                     // Signed in

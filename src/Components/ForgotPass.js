@@ -12,6 +12,7 @@ const forgotPass = () => {
     function handleSubmit(event) {
         event.preventDefault();
         console.log("Forgot Event: ", event);
+        // Code resource: https://firebase.google.com/docs/reference/js/firebase.auth.Auth#sendpasswordresetemail
         firebase.auth().sendPasswordResetEmail(email)
             .then(function() {
                 alert('Reset password email sent');

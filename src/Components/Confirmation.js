@@ -9,6 +9,7 @@ const Confirmation = () => {
     const history = useHistory();
 
     useEffect(() => {
+        // Code resource used for below: https://firebase.google.com/docs/auth/web/email-link-auth
         if(firebase.auth().isSignInWithEmailLink(window.location.href)) {
             var email = window.localStorage.getItem('emailForSignIn');
             var pass = window.localStorage.getItem('passForSignIn');
