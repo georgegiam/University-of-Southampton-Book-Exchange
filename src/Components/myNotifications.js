@@ -125,7 +125,7 @@ class MyNotifications extends Component {
 
         var calDate = Date.parse(appoint.date)
         var month = new Date(calDate).getMonth();
-        var day = new Date(calDate).getDay();
+        var day = new Date(calDate).getDate();
         if(isNaN(day)) {
           day = "N/A";
         }
